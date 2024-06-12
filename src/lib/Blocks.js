@@ -480,6 +480,7 @@ function printCellOutline(p5, input, pos, size) {
 
 function printCellFill(p5, input, pos, size) {
   // PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+
   switch (input) {
     //arc
     case "arcBR":
