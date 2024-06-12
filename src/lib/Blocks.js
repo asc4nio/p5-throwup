@@ -1,66 +1,73 @@
-export const PRIMITIVES = {
+const PRIMITIVES = {
+  square: (p5, x, y, w, h) => {
+    p5.rect(x, y, w, h);
+  },
   point: {
-    left: (p5, x, y, w, h) => {
-      p5.point(x, y + h * 0.5);
-    },
-    right: (p5, x, y, w, h) => {
-      p5.point(x + w, y + h * 0.5);
-    },
-    top: (p5, x, y, w, h) => {
-      p5.point(x + w * 0.5, y + h * 0.5);
-    },
-    bottom: (p5, x, y, w, h) => {
-      p5.point(x + w * 0.5, y + h);
-    },
-    bl: (p5, x, y, w, h) => {
-      p5.point(x, y + h);
-    },
-    br: (p5, x, y, w, h) => {
-      p5.point(x + w, y + h);
-    },
-    tl: (p5, x, y, w, h) => {
-      p5.point(x, y);
-    },
-    tr: (p5, x, y, w, h) => {
-      p5.point(x + w, y);
+    outline: {
+      left: (p5, x, y, w, h) => {
+        p5.point(x, y + h * 0.5);
+      },
+      right: (p5, x, y, w, h) => {
+        p5.point(x + w, y + h * 0.5);
+      },
+      top: (p5, x, y, w, h) => {
+        p5.point(x + w * 0.5, y + h * 0.5);
+      },
+      bottom: (p5, x, y, w, h) => {
+        p5.point(x + w * 0.5, y + h);
+      },
+      bl: (p5, x, y, w, h) => {
+        p5.point(x, y + h);
+      },
+      br: (p5, x, y, w, h) => {
+        p5.point(x + w, y + h);
+      },
+      tl: (p5, x, y, w, h) => {
+        p5.point(x, y);
+      },
+      tr: (p5, x, y, w, h) => {
+        p5.point(x + w, y);
+      },
     },
   },
   line: {
-    left: (p5, x, y, w, h) => {
-      p5.beginShape();
-      p5.vertex(x, y);
-      p5.vertex(x, y + h);
-      p5.endShape();
-    },
-    right: (p5, x, y, w, h) => {
-      p5.beginShape();
-      p5.vertex(x + w, y);
-      p5.vertex(x + w, y + h);
-      p5.endShape();
-    },
-    top: (p5, x, y, w, h) => {
-      p5.beginShape();
-      p5.vertex(x, y);
-      p5.vertex(x + w, y);
-      p5.endShape();
-    },
-    bottom: (p5, x, y, w, h) => {
-      p5.beginShape();
-      p5.vertex(x, y + h);
-      p5.vertex(x + w, y + h);
-      p5.endShape();
-    },
-    centerY: (p5, x, y, w, h) => {
-      p5.beginShape();
-      p5.vertex(x + w * 0.5, y);
-      p5.vertex(x + w * 0.5, y + h);
-      p5.endShape();
-    },
-    centerX: (p5, x, y, w, h) => {
-      p5.beginShape();
-      p5.vertex(x, y + h * 0.5);
-      p5.vertex(x + w, y + h * 0.5);
-      p5.endShape();
+    outline: {
+      left: (p5, x, y, w, h) => {
+        p5.beginShape();
+        p5.vertex(x, y);
+        p5.vertex(x, y + h);
+        p5.endShape();
+      },
+      right: (p5, x, y, w, h) => {
+        p5.beginShape();
+        p5.vertex(x + w, y);
+        p5.vertex(x + w, y + h);
+        p5.endShape();
+      },
+      top: (p5, x, y, w, h) => {
+        p5.beginShape();
+        p5.vertex(x, y);
+        p5.vertex(x + w, y);
+        p5.endShape();
+      },
+      bottom: (p5, x, y, w, h) => {
+        p5.beginShape();
+        p5.vertex(x, y + h);
+        p5.vertex(x + w, y + h);
+        p5.endShape();
+      },
+      centerY: (p5, x, y, w, h) => {
+        p5.beginShape();
+        p5.vertex(x + w * 0.5, y);
+        p5.vertex(x + w * 0.5, y + h);
+        p5.endShape();
+      },
+      centerX: (p5, x, y, w, h) => {
+        p5.beginShape();
+        p5.vertex(x, y + h * 0.5);
+        p5.vertex(x + w, y + h * 0.5);
+        p5.endShape();
+      },
     },
   },
   halfLine: {
@@ -119,45 +126,45 @@ export const PRIMITIVES = {
   },
 };
 
-export const COMPS = {
+const COMPS = {
   corner: {
     tl: (p5, x, y, w, h) => {
-      PRIMITIVES.line.left(p5, x, y, w, h);
-      PRIMITIVES.line.top(p5, x, y, w, h);
+      PRIMITIVES.line.outline.left(p5, x, y, w, h);
+      PRIMITIVES.line.outline.top(p5, x, y, w, h);
     },
     tr: (p5, x, y, w, h) => {
-      PRIMITIVES.line.right(p5, x, y, w, h);
-      PRIMITIVES.line.top(p5, x, y, w, h);
+      PRIMITIVES.line.outline.right(p5, x, y, w, h);
+      PRIMITIVES.line.outline.top(p5, x, y, w, h);
     },
     bl: (p5, x, y, w, h) => {
-      PRIMITIVES.line.left(p5, x, y, w, h);
-      PRIMITIVES.line.bottom(p5, x, y, w, h);
+      PRIMITIVES.line.outline.left(p5, x, y, w, h);
+      PRIMITIVES.line.outline.bottom(p5, x, y, w, h);
     },
     br: (p5, x, y, w, h) => {
-      PRIMITIVES.line.right(p5, x, y, w, h);
-      PRIMITIVES.line.bottom(p5, x, y, w, h);
+      PRIMITIVES.line.outline.right(p5, x, y, w, h);
+      PRIMITIVES.line.outline.bottom(p5, x, y, w, h);
     },
   },
   openSquare: {
     top: (p5, x, y, w, h) => {
-      PRIMITIVES.line.left(p5, x, y, w, h);
-      PRIMITIVES.line.bottom(p5, x, y, w, h);
-      PRIMITIVES.line.right(p5, x, y, w, h);
+      PRIMITIVES.line.outline.left(p5, x, y, w, h);
+      PRIMITIVES.line.outline.bottom(p5, x, y, w, h);
+      PRIMITIVES.line.outline.right(p5, x, y, w, h);
     },
     bottom: (p5, x, y, w, h) => {
-      PRIMITIVES.line.left(p5, x, y, w, h);
-      PRIMITIVES.line.top(p5, x, y, w, h);
-      PRIMITIVES.line.right(p5, x, y, w, h);
+      PRIMITIVES.line.outline.left(p5, x, y, w, h);
+      PRIMITIVES.line.outline.top(p5, x, y, w, h);
+      PRIMITIVES.line.outline.right(p5, x, y, w, h);
     },
     left: (p5, x, y, w, h) => {
-      PRIMITIVES.line.right(p5, x, y, w, h);
-      PRIMITIVES.line.top(p5, x, y, w, h);
-      PRIMITIVES.line.right(p5, x, y, w, h);
+      PRIMITIVES.line.outline.right(p5, x, y, w, h);
+      PRIMITIVES.line.outline.top(p5, x, y, w, h);
+      PRIMITIVES.line.outline.right(p5, x, y, w, h);
     },
     right: (p5, x, y, w, h) => {
-      PRIMITIVES.line.left(p5, x, y, w, h);
-      PRIMITIVES.line.top(p5, x, y, w, h);
-      PRIMITIVES.line.bottom(p5, x, y, w, h);
+      PRIMITIVES.line.outline.left(p5, x, y, w, h);
+      PRIMITIVES.line.outline.top(p5, x, y, w, h);
+      PRIMITIVES.line.outline.bottom(p5, x, y, w, h);
     },
   },
   entrance: {
@@ -180,7 +187,7 @@ export const COMPS = {
   },
 };
 
-export const LETTERS = {
+const LETTERS = {
   " ": [
     [[""], [""], [""]],
     [[""], [""], [""]],
@@ -346,56 +353,55 @@ export const LETTERS = {
   ],
 };
 
-export function mapAction(p5, input, pos, size) {
+function printCellOutline(p5, input, pos, size) {
   //   console.log(input, pos, size);
-
   switch (input) {
     case "":
       break;
     //point
     case "pointL":
-      PRIMITIVES.point.left(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.point.outline.left(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "pointR":
-      PRIMITIVES.point.right(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.point.outline.right(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "pointT":
-      PRIMITIVES.point.top(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.point.outline.top(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "pointB":
-      PRIMITIVES.point.bottom(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.point.outline.bottom(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "pointTL":
-      PRIMITIVES.point.tl(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.point.outline.tl(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "pointTR":
-      PRIMITIVES.point.tr(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.point.outline.tr(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "pointBL":
-      PRIMITIVES.point.bl(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.point.outline.bl(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "pointBR":
-      PRIMITIVES.point.br(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.point.outline.br(p5, pos.x, pos.y, size.x, size.y);
       break;
 
     //line
     case "lineL":
-      PRIMITIVES.line.left(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.line.outline.left(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "lineR":
-      PRIMITIVES.line.right(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.line.outline.right(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "lineT":
-      PRIMITIVES.line.top(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.line.outline.top(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "lineB":
-      PRIMITIVES.line.bottom(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.line.outline.bottom(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "lineCY":
-      PRIMITIVES.line.centerY(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.line.outline.centerY(p5, pos.x, pos.y, size.x, size.y);
       break;
     case "lineCX":
-      PRIMITIVES.line.centerX(p5, pos.x, pos.y, size.x, size.y);
+      PRIMITIVES.line.outline.centerX(p5, pos.x, pos.y, size.x, size.y);
       break;
 
     //halfLine
@@ -471,3 +477,56 @@ export function mapAction(p5, input, pos, size) {
       console.warn("switch error", input, pos, size);
   }
 }
+
+function printCellFill(p5, input, pos, size) {
+  // PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+  switch (input) {
+    //arc
+    case "arcBR":
+      PRIMITIVES.arc.br(p5, pos.x, pos.y, size.x, size.y);
+      break;
+    case "arcBL":
+      PRIMITIVES.arc.bl(p5, pos.x, pos.y, size.x, size.y);
+      break;
+    case "arcTR":
+      PRIMITIVES.arc.tr(p5, pos.x, pos.y, size.x, size.y);
+      break;
+    case "arcTL":
+      PRIMITIVES.arc.tl(p5, pos.x, pos.y, size.x, size.y);
+      break;
+
+    //entrance
+    case "entranceTL":
+      PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+      p5.erase();
+      COMPS.entrance.tl(p5, pos.x, pos.y, size.x, size.y);
+      p5.noErase();
+      break;
+    case "entranceBL":
+      PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+      p5.erase();
+      COMPS.entrance.bl(p5, pos.x, pos.y, size.x, size.y);
+      p5.noErase();
+
+      break;
+    case "entranceTR":
+      PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+      p5.erase();
+      COMPS.entrance.tr(p5, pos.x, pos.y, size.x, size.y);
+      p5.noErase();
+
+      break;
+    case "entranceBR":
+      PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+      p5.erase();
+      COMPS.entrance.br(p5, pos.x, pos.y, size.x, size.y);
+      p5.noErase();
+
+      break;
+    default:
+      PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+      console.warn("switch error", input, pos, size);
+  }
+}
+
+export { LETTERS, printCellOutline, printCellFill };

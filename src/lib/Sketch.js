@@ -1,19 +1,35 @@
-import { LETTERS, mapAction } from "./Blocks";
+import { LETTERS, printCellOutline, printCellFill } from "./Blocks";
 import { STRING, CELL_SIZE, GAP, THICKNESS, MARGIN } from "./stores/AppStore";
 import { get } from "svelte/store";
 
 export const mySketch = (p5) => {
+  const size = {
+    x: 800,
+    y: 800,
+  };
+  let outlineLayer, fillLayer;
   p5.setup = () => {
-    p5.createCanvas(800, 800);
-    p5.fill(0, 0);
-    p5.stroke(0);
-    // p5.strokeWeight(4);
+    p5.createCanvas(size.x, size.y);
+    fillLayer = p5.createGraphics(size.x, size.y);
+    outlineLayer = p5.createGraphics(size.x, size.y);
   };
 
   p5.draw = () => {
-    p5.strokeWeight(get(THICKNESS));
+    fillLayer.clear();
+    outlineLayer.clear();
+    outlineLayer.strokeWeight(get(THICKNESS));
     p5.background(220);
-    printString(p5, get(STRING), get(CELL_SIZE), get(GAP), get(MARGIN));
+    printString(
+      p5,
+      fillLayer,
+      outlineLayer,
+      get(STRING),
+      get(CELL_SIZE),
+      get(GAP),
+      get(MARGIN)
+    );
+    p5.image(fillLayer, 0, 0);
+    p5.image(outlineLayer, 0, 0);
   };
 
   p5.windowResized = () => {
@@ -21,33 +37,39 @@ export const mySketch = (p5) => {
   };
 };
 
-function printString(p5, string, compSize, gap, margin) {
+function printString(
+  p5,
+  fillLayer,
+  outlineLayer,
+  string,
+  compSize,
+  gap,
+  margin
+) {
   let currPos = {
     x: margin,
     y: margin,
   };
   let letters = string.split("");
   for (let i = 0; i < letters.length; i++) {
-    // printLetter(p5, letters[i], currPos, compSize);
-
     let letter = new Letter(p5, letters[i], currPos, compSize);
-    letter.print(p5);
+    letter.print(fillLayer, outlineLayer);
 
     currPos.x += compSize.x * 3 + gap.x;
-    if (currPos.x + compSize.x * 3 + margin >= p5.width) {
+    if (currPos.x + compSize.x * 3 + margin >= fillLayer.width) {
       currPos.x = margin;
       currPos.y += compSize.y * 4 + gap.y;
     }
   }
 }
 
-class ThrowUp {
-  constructor(p5, string, pos, gap) {
-    this.string = string;
-    this.pos = pos;
-    this.gap = gap;
-  }
-}
+// class ThrowUp {
+//   constructor(p5, string, pos, gap) {
+//     this.string = string;
+//     this.pos = pos;
+//     this.gap = gap;
+//   }
+// }
 
 class Letter {
   constructor(p5, letter, pos, size) {
@@ -56,23 +78,31 @@ class Letter {
     this.size = size;
   }
 
-  print(p5) {
+  print(fillLayer, outlineLayer) {
     let data = LETTERS[this.character];
     this.currPrintPos = {
+      x: this.pos.x,
+      y: this.pos.y,
+    };
+    this.currFillPrintPos = {
       x: this.pos.x,
       y: this.pos.y,
     };
 
     for (let i = 0; i < data.length; i++) {
       let currentRow = data[i];
-      this.printRow(p5, currentRow);
+      this.printRowFill(fillLayer, currentRow);
+    }
+    for (let i = 0; i < data.length; i++) {
+      let currentRow = data[i];
+      this.printRowOutline(outlineLayer, currentRow);
     }
   }
 
-  printRow(p5, row) {
+  printRowOutline(p5, row) {
     for (let i = 0; i < row.length; i++) {
       let currentCell = row[i];
-      this.printCell(p5, currentCell);
+      this.printCellOutline(p5, currentCell);
 
       this.currPrintPos.x += this.size.x;
       if (i == row.length - 1) {
@@ -81,16 +111,46 @@ class Letter {
       }
     }
   }
+  printRowFill(p5, row) {
+    for (let i = 0; i < row.length; i++) {
+      let currentCell = row[i];
+      this.printCellFill(p5, currentCell);
+      this.currFillPrintPos.x += this.size.x;
+      if (i == row.length - 1) {
+        this.currFillPrintPos.x = this.pos.x;
+        this.currFillPrintPos.y += this.size.y;
+      }
+    }
+  }
 
-  printCell(p5, cell) {
+  printCellOutline(p5, cell) {
+    p5.push();
+    p5.fill(0, 0);
+    p5.stroke(0);
     for (let element of cell) {
-      mapAction(
+      printCellOutline(
         p5,
         element,
         { x: this.currPrintPos.x, y: this.currPrintPos.y },
         this.size
       );
     }
+    p5.pop();
+  }
+
+  printCellFill(p5, cell) {
+    p5.push();
+    p5.fill(120);
+    p5.strokeWeight(0);
+    for (let element of cell) {
+      printCellFill(
+        p5,
+        element,
+        { x: this.currFillPrintPos.x, y: this.currFillPrintPos.y },
+        this.size
+      );
+    }
+    p5.pop();
   }
 }
 
@@ -108,7 +168,7 @@ class Letter {
 //       let currentItem = currentRow[x];
 
 //       for (let element of currentItem) {
-//         mapAction(p5, element, { x: currPrintPos.x, y: currPrintPos.y }, size);
+//         printCellOutline(p5, element, { x: currPrintPos.x, y: currPrintPos.y }, size);
 //       }
 
 //       currPrintPos.x += size.x;
