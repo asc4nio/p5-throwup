@@ -1,9 +1,43 @@
 import { LETTERS, printCellOutline, printCellFill } from "./Blocks";
 
 class ThrowUp {
-  constructor(_string, _position) {
+  constructor(p5, _string, _position) {
     this.string = _string || "abcdefghijklmnopqrstuvwxyz";
     this.position = _position || { x: 0, y: 0 };
+
+    this.gap = { x: 0, y: 10 };
+    this.margin = 40;
+
+    this.splittedString = this.string.split("");
+    this.characters = [];
+
+    this.initCharacters(p5);
+  }
+  initCharacters(p5) {
+    let printPos = {
+      x: this.position.x,
+      y: this.position.y,
+    };
+
+    for (let i = 0; i < this.splittedString.length; i++) {
+      let character = new Character(this.splittedString[i], {
+        x: printPos.x,
+        y: printPos.y,
+      });
+      this.characters = [...this.characters, character];
+
+      printPos.x += character.width + this.gap.x;
+      if (printPos.x + character.width + this.margin >= p5.width) {
+        printPos.x = this.margin;
+        printPos.y += character.height + this.gap.y;
+      }
+    }
+  }
+  print(p5) {
+    for (let character of this.characters) {
+      character.print(p5, "fill");
+      character.print(p5, "outline");
+    }
   }
 }
 
