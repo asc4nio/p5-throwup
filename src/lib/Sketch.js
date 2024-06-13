@@ -10,6 +10,7 @@ export const mySketch = (p5) => {
   };
   let tupLayer;
   let a, b;
+
   p5.setup = () => {
     p5.createCanvas(size.x, size.y);
     p5.background(220);
@@ -36,22 +37,7 @@ export const mySketch = (p5) => {
     p5.image(tupLayer, 0, 0);
   };
 
-  p5.draw = () => {
-    // fillLayer.clear();
-    // outlineLayer.clear();
-    // outlineLayer.strokeWeight(get(THICKNESS));
-    // printString(
-    //   p5,
-    //   fillLayer,
-    //   outlineLayer,
-    //   get(STRING),
-    //   get(CELL_SIZE),
-    //   get(GAP),
-    //   get(MARGIN)
-    // );
-    // p5.image(fillLayer, 0, 0);
-    // p5.image(outlineLayer, 0, 0);
-  };
+  p5.draw = () => {};
 
   p5.windowResized = () => {
     // p5.resizeCanvas(800, 800);

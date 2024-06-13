@@ -5,7 +5,7 @@ class ThrowUp {
     this.string = _string || "abcdefghijklmnopqrstuvwxyz";
     this.position = _position || { x: 0, y: 0 };
 
-    this.gap = -10;
+    this.gap = 10;
 
     this.splittedString = this.string.split("");
     this.characters = [];
@@ -19,31 +19,36 @@ class ThrowUp {
       y: this.position.y,
     };
 
-    let cellSize = {
-      x: 30,
-      y: 30,
-    };
-    let transform = {
-      translate: {
-        x: 0,
-        y: 0,
-      },
-      rotate: 0.1,
-      shear: {
-        x: 0.0,
-        y: -0.1,
-      },
-    };
-
     for (let i = 0; i < this.splittedString.length; i++) {
+      let config = {
+        colors: {
+          fill: [120],
+          stroke: [0],
+        },
+        cellSize: {
+          x: 30,
+          y: 30,
+        },
+        thickness: 6,
+        transform: {
+          translate: {
+            x: 0,
+            y: 0,
+          },
+          rotate: 0,
+          shear: {
+            x: 0.0,
+            y: 0.0,
+          },
+        },
+      };
       let character = new Character(
         this.splittedString[i],
         {
           x: printPos.x,
           y: printPos.y,
         },
-        cellSize,
-        transform
+        config
       );
       this.characters = [...this.characters, character];
       this.width += character.width + this.gap;
@@ -64,36 +69,31 @@ class ThrowUp {
 }
 
 class Character {
-  constructor(_character, _position, _cellSize, _transform) {
+  constructor(_character, _position, _config) {
     this.character = _character || "a";
     this.position = _position || { x: 0, y: 0 };
-    this.cellSize = _cellSize || {
-      x: 30,
-      y: 30,
-    };
-    this.transform = _transform || {
+    this.cellSize = _config.cellSize || { x: 30, y: 30 };
+    this.transform = _config.transform || {
       translate: {
         x: 0,
         y: 0,
       },
-      rotate: 0.1,
+      rotate: 0,
       shear: {
         x: 0.0,
         y: 0.0,
       },
     };
+    this.colors = _config.colors || {
+      fill: [220],
+      stroke: [0],
+    };
+    this.thickness = _config.thickness || 8;
 
     this.data = LETTERS[this.character];
 
     this.width = this.data[0].length * this.cellSize.x;
     this.height = this.data.length * this.cellSize.y;
-
-    this.colors = {
-      fill: [220],
-      stroke: [0],
-    };
-
-    this.thickness = 8;
   }
 
   print(p5, command) {

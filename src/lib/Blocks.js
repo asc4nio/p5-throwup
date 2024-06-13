@@ -194,6 +194,12 @@ const LETTERS = {
     [[""], [""], [""]],
     [[""], [""], [""]],
   ],
+  A: [
+    [["openSquareB"], ["arcBR"], ["arcBL"]],
+    [["entranceTL"], ["pointBR"], ["lineR"]],
+    [["entranceBL"], [""], ["lineR"]],
+    [["cornerBL"], ["cornerBR"], ["openSquareT"]],
+  ],
   a: [
     [["arcBR"], ["arcBL"], ["openSquareB"]],
     [["lineL"], ["pointBR"], ["entranceTR"]],
@@ -220,8 +226,8 @@ const LETTERS = {
   ],
   e: [
     [["arcBR"], ["arcBL"], ["openSquareB"]],
-    [["arcTL"], ["arcBL"], ["arcTR"]],
-    [["arcBR"], ["arcTR"], ["arcBL"]],
+    [["arcTL"], ["arcBL", "+"], ["arcTR"]],
+    [["arcBR"], ["arcTR", "+"], ["arcBL"]],
     [["arcTL"], ["arcTR"], ["openSquareT"]],
   ],
   f: [
@@ -304,15 +310,15 @@ const LETTERS = {
   ],
   s: [
     [["arcBR"], ["arcBL"], ["openSquareB"]],
-    [["lineL"], ["arcBR"], ["arcBL"]],
-    [["arcTL"], ["arcTR"], ["lineR"]],
+    [["lineL"], ["arcBR", "+"], ["arcBL", "+"]],
+    [["arcTL", "+"], ["arcTR", "+"], ["lineR"]],
     [["openSquareT"], ["arcTL"], ["arcTR"]],
   ],
   t: [
-    [["lineB"], ["openSquareB"], ["arcTR", "lineR"]],
-    [["entranceTL"], ["lineB"], ["cornerBR"]],
-    [["entranceBL"], [""], ["arcBL"]],
-    [["openSquareT"], ["arcTL"], ["arcTR"]],
+    [["lineB", "-"], ["openSquareB"], ["arcTR", "lineR"]],
+    [["cornerBL"], [""], ["cornerBR"]],
+    [["arcBR"], ["arcBR", "+"], ["arcBL"]],
+    [["arcTL"], ["arcTR"], ["openSquareT"]],
   ],
   // t: [
   //   [["cornerTL"], ["lineT"], ["cornerTR"]],
@@ -488,6 +494,14 @@ function printCellFill(p5, input, pos, size) {
   // PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
 
   switch (input) {
+    case "-":
+      p5.erase();
+      PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+      p5.noErase();
+      break;
+    case "+":
+      PRIMITIVES.square(p5, pos.x, pos.y, size.x, size.y);
+      break;
     //arc
     case "arcBR":
       PRIMITIVES.arc.br(p5, pos.x, pos.y, size.x, size.y);
