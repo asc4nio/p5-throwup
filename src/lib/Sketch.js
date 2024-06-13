@@ -15,17 +15,21 @@ export const mySketch = (p5) => {
     p5.background(220);
 
     tupLayer = p5.createGraphics(size.x, size.y);
+    tupLayer.translate(size.x / 2, size.y / 2);
 
-    // a = new Character("o", {
-    //   x: 100,
-    //   y: 100,
+    tupLayer.line(0, -size.y, 0, size.y);
+    tupLayer.line(-size.x, 0, size.x, 0);
+
+    // a = new Character("a", {
+    //   x: -50,
+    //   y: 50,
     // });
     // a.print(tupLayer, "fill");
     // a.print(tupLayer, "outline");
 
-    b = new ThrowUp(p5, "abc", {
-      x: 200,
-      y: 200,
+    b = new ThrowUp(p5, "rates", {
+      x: 0,
+      y: 0,
     });
     b.print(tupLayer);
 

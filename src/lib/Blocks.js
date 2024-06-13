@@ -220,8 +220,8 @@ const LETTERS = {
   ],
   e: [
     [["arcBR"], ["arcBL"], ["openSquareB"]],
-    [["arcTL"], [""], ["arcTR"]],
-    [["arcBR"], [""], ["arcBL"]],
+    [["arcTL"], ["arcBL"], ["arcTR"]],
+    [["arcBR"], ["arcTR"], ["arcBL"]],
     [["arcTL"], ["arcTR"], ["openSquareT"]],
   ],
   f: [
@@ -298,7 +298,7 @@ const LETTERS = {
   ],
   r: [
     [["openSquareB"], ["arcBR"], ["arcBL"]],
-    [["entranceTL"], [""], ["arcTR"]],
+    [["entranceTL"], ["pointBL"], ["arcTR"]],
     [["entranceBL"], [""], ["arcBL"]],
     [["openSquareT"], ["cornerBL"], ["cornerBR"]],
   ],
@@ -309,11 +309,17 @@ const LETTERS = {
     [["openSquareT"], ["arcTL"], ["arcTR"]],
   ],
   t: [
-    [["cornerTL"], ["lineT"], ["cornerTR"]],
-    [["cornerBL"], [""], ["cornerBR"]],
-    [["arcBR"], [""], ["arcBL"]],
-    [["cornerBL"], ["lineB"], ["cornerBR"]],
+    [["lineB"], ["openSquareB"], ["arcTR", "lineR"]],
+    [["entranceTL"], ["lineB"], ["cornerBR"]],
+    [["entranceBL"], [""], ["arcBL"]],
+    [["openSquareT"], ["arcTL"], ["arcTR"]],
   ],
+  // t: [
+  //   [["cornerTL"], ["lineT"], ["cornerTR"]],
+  //   [["cornerBL"], [""], ["cornerBR"]],
+  //   [["arcBR"], [""], ["arcBL"]],
+  //   [["cornerBL"], ["lineB"], ["cornerBR"]],
+  // ],
   u: [
     [["openSquareB"], ["lineT"], ["cornerTR"]],
     [["entranceTL", "lineR"], [""], ["lineR"]],
