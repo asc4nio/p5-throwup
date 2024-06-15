@@ -1,8 +1,4 @@
-// import { STRING, CELL_SIZE, GAP, THICKNESS, MARGIN } from "./stores/AppStore";
-// import { get } from "svelte/store";
-
-// import { Character, ThrowUp } from "./__ThrowUp";
-import { Cell, Shape, Character, ThrowUp } from "./ThrowUp";
+import { ThrowUp } from "./ThrowUp";
 
 export const mySketch = (p5) => {
   const size = {
@@ -25,7 +21,7 @@ export const mySketch = (p5) => {
     // tupLayer.strokeWeight(4);
     // tupLayer.fill(0, 0);
 
-    a = new ThrowUp("ab", { x: 0, y: 0 });
+    a = new ThrowUp("abcd", { x: 0, y: 0 });
     a.print(tupLayer);
     console.warn(a);
 

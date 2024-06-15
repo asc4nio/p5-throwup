@@ -1,36 +1,4 @@
-const PI = 3.14159265;
-
-const SHAPES = {
-  "#": () => {
-    return;
-  },
-  square: (p5, x, y, w, h) => {
-    p5.rect(x, y, w, h);
-  },
-  point: {
-    center: (p5, x, y, w, h) => {
-      p5.point(x + w * 0.5, y + h * 0.5);
-    },
-    side: (p5, x, y, w, h) => {
-      p5.point(x, y + h * 0.5);
-    },
-    corner: (p5, x, y, w, h) => {
-      p5.point(x, y);
-    },
-  },
-  line: {
-    side: (p5, x, y, w, h) => {
-      p5.line(x, y, x, y + h);
-    },
-    center: (p5, x, y, w, h) => {
-      p5.line(x + w * 0.5, y, x + w * 0.5, y + h);
-    },
-  },
-  arc: (p5, x, y, w, h) => {
-    // p5.bezier(x, y + h, x, y, x, y, x + w, y);
-    p5.arc(x + w, y + h, w * 2, h * 2, p5.PI * 1, p5.PI * 1.5);
-  },
-};
+import { SHAPES, LETTERS } from "./Blocks";
 
 export class Shape {
   constructor(input, rotation) {
@@ -56,7 +24,10 @@ export class Cell {
 
     if (this.shapesList.length > 0) {
       for (let item of this.shapesList) {
-        this.shapes.push(new Shape(item[0], item[1] || 0));
+        this.shapes.push({
+          instance: new Shape(item[0], item[1] || 0),
+          action: item[2] || "+",
+        });
       }
     }
   }
@@ -69,85 +40,21 @@ export class Cell {
       p5.stroke(...style.stroke);
       p5.strokeWeight(style.strokeWeight);
 
-      // p5.fill(120);
-      // p5.stroke(0);
-      // p5.strokeWeight(4);
-
       // MOVE FOR ROTATION
       p5.translate(w * 0.5, h * 0.5);
       // SHAPE ROTATION
-      p5.rotate(shape.rotation);
+      p5.rotate(shape.instance.rotation);
       // RESET POSITION
       p5.translate(-w * 0.5, -h * 0.5);
 
-      shape.print(p5, y, x, w, h);
+      if (shape.action == "-") p5.erase();
+      shape.instance.print(p5, y, x, w, h);
+      if (shape.action == "-") p5.noErase();
 
       p5.pop();
     }
   }
 }
-
-const LETTERS = {
-  a: {
-    outline: [
-      //0
-      [
-        [["arc"]],
-        [["arc", PI * 0.5]],
-        [["line-side"], ["line-side", PI * 0.5], ["line-side", PI * 1]],
-      ],
-      //1
-      [[["line-side"]], [["point-corner", PI]], [["line-side", PI]]],
-      //2
-      [[["line-side"]], [["#"]], [["line-side", PI]]],
-      //3
-      [
-        [["arc", PI * 1.5]],
-        [["arc", PI * 1]],
-        [["line-side"], ["line-side", PI * 1.5], ["line-side", PI * 1]],
-      ],
-    ],
-    fill: [
-      //0
-      [[["arc"]], [["arc", PI * 0.5]], [["square"]]], //1
-      [[["square"]], [["square"]], [["square"]]],
-      //2
-      [[["square"]], [["square"]], [["square"]]],
-      //3
-      [[["arc", PI * 1.5]], [["arc", PI * 1]], [["square"]]],
-    ],
-  },
-  b: {
-    outline: [
-      //0
-      [
-        [["line-side"], ["line-side", PI * 0.5], ["line-side", PI * 1]],
-        [["arc"]],
-        [["arc", PI * 0.5]],
-      ],
-      //1
-      [[["line-side"]], [["point-side", PI * 2]], [["arc", PI]]],
-      //2
-      [[["line-side"]], [["point-side", PI * 2]], [["arc", PI * 0.5]]],
-      //3
-      [
-        [["line-side"], ["line-side", PI * 1.5], ["line-side", PI * 1]],
-        [["arc", PI * 1.5]],
-        [["arc", PI * 1]],
-      ],
-    ],
-    fill: [
-      //0
-      [[["square"]], [["arc"]], [["arc", PI * 0.5]]],
-      //1
-      [[["square"]], [["square"]], [["arc", PI * 1]]],
-      //2
-      [[["square"]], [["square"]], [["arc", PI * 0.5]]],
-      //3
-      [[["square"]], [["arc", PI * 1.5]], [["arc", PI * 1]]],
-    ],
-  },
-};
 
 export class Character {
   constructor(character, position, cellSize, transform) {
@@ -350,7 +257,7 @@ export class ThrowUp {
     this.splittedString = this.string.split("");
     this.characters = [];
 
-    this.gap = 10;
+    this.gap = -8;
     this.width = 0;
 
     this.initCharacters();
@@ -362,23 +269,23 @@ export class ThrowUp {
     };
 
     for (let i = 0; i < this.splittedString.length; i++) {
-      // CHARACTER CONFIG
+      // EACH CHARACTER CONFIG
       let config = {
-        cellSize: 30,
+        cellSize: 40,
         transform: {
           translate: {
             x: 0,
-            y: 0,
+            y: (Math.random() * 2 - 1) * 10,
           },
 
           scale: {
             x: 1,
             y: 1,
           },
-          rotate: 0,
+          rotate: -0.2,
           shear: {
-            x: 0.0,
-            y: 0,
+            x: 0,
+            y: 0.2,
           },
         },
       };
@@ -399,13 +306,13 @@ export class ThrowUp {
   print(p5) {
     let outlineStyle = {
       fill: [0, 0],
-      stroke: [0, 0, 255],
-      strokeWeight: 8,
+      stroke: [220],
+      strokeWeight: 6,
     };
     let fillStyle = {
-      fill: [150],
+      fill: [0],
       stroke: [0],
-      strokeWeight: 0,
+      strokeWeight: 10,
     };
 
     p5.push();
