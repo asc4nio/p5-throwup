@@ -1,7 +1,8 @@
-import { STRING, CELL_SIZE, GAP, THICKNESS, MARGIN } from "./stores/AppStore";
-import { get } from "svelte/store";
+// import { STRING, CELL_SIZE, GAP, THICKNESS, MARGIN } from "./stores/AppStore";
+// import { get } from "svelte/store";
 
-import { Character, ThrowUp } from "./ThrowUp";
+// import { Character, ThrowUp } from "./__ThrowUp";
+import { Cell, Shape, Character, ThrowUp } from "./ThrowUp";
 
 export const mySketch = (p5) => {
   const size = {
@@ -9,7 +10,7 @@ export const mySketch = (p5) => {
     y: 800,
   };
   let tupLayer;
-  let a, b;
+  let a;
 
   p5.setup = () => {
     p5.createCanvas(size.x, size.y);
@@ -21,25 +22,17 @@ export const mySketch = (p5) => {
     tupLayer.line(0, -size.y, 0, size.y);
     tupLayer.line(-size.x, 0, size.x, 0);
 
-    // a = new Character("a", {
-    //   x: -50,
-    //   y: 50,
-    // });
-    // a.print(tupLayer, "fill");
-    // a.print(tupLayer, "outline");
+    // tupLayer.strokeWeight(4);
+    // tupLayer.fill(0, 0);
 
-    b = new ThrowUp(p5, "rates", {
-      x: 0,
-      y: 0,
-    });
-    b.print(tupLayer);
+    a = new ThrowUp("ab", { x: 0, y: 0 });
+    a.print(tupLayer);
+    console.warn(a);
 
     p5.image(tupLayer, 0, 0);
   };
 
   p5.draw = () => {};
 
-  p5.windowResized = () => {
-    // p5.resizeCanvas(800, 800);
-  };
+  p5.windowResized = () => {};
 };
