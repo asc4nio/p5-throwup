@@ -16,6 +16,10 @@
 body {
 }
 
+main {
+  display: flex;
+}
+
 /*
 a {
   font-weight: 500;

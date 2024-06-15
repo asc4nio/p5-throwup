@@ -85,16 +85,19 @@ export class Character {
 
     // APPLY TRANSFORMATIONS
     p5.translate(this.transform.translate.x, this.transform.translate.y);
-    p5.rotate(this.transform.rotate);
     p5.shearX(this.transform.shear.x);
     p5.shearY(this.transform.shear.y);
-    p5.scale(this.transform.scale.x, this.transform.scale.y);
 
     // CENTER POSITION
     p5.translate(
       this.position.x - this.width / 2,
       this.position.y - this.height / 2
     );
+
+    p5.rotate(this.transform.rotate);
+    p5.scale(this.transform.scale.x, this.transform.scale.y);
+
+    p5.translate(-this.width / 2, -this.height / 2);
 
     for (let y = 0; y < _data.length; y++) {
       let currentRow = _data[y];

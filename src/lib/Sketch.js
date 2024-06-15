@@ -1,5 +1,5 @@
 import { ThrowUp } from "./ThrowUp";
-import { CONTROLS } from "./stores/Store";
+import { STATE } from "./stores/Store";
 import { get } from "svelte/store";
 
 export const mySketch = (p5) => {
@@ -8,7 +8,10 @@ export const mySketch = (p5) => {
     y: 800,
   };
   let tup, tupLayer;
-  let string = get(CONTROLS).string;
+  // let string = get(STATE).string;
+
+  let state = get(STATE);
+
   p5.setup = () => {
     p5.createCanvas(size.x, size.y);
     // p5.background(220);
@@ -21,16 +24,16 @@ export const mySketch = (p5) => {
     // tupLayer.line(0, -size.y, 0, size.y);
     // tupLayer.line(-size.x, 0, size.x, 0);
 
-    tup = new ThrowUp(string);
+    tup = new ThrowUp(state.string, state.position, state.config);
 
     // p5.image(tupLayer, 0, 0);
   };
 
   p5.draw = () => {
-    if (get(CONTROLS).string !== string) {
-      string = get(CONTROLS).string;
-      tup = new ThrowUp(string);
-    }
+    // if (get(STATE) !== state) {
+    state = get(STATE);
+    tup = new ThrowUp(state.string, state.position, state.config);
+    // }
 
     // reset buffers
     p5.clear();
