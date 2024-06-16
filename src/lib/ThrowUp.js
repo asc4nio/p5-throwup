@@ -9,22 +9,21 @@ export class ThrowUp {
     this.characters = [];
 
     this.config = _config || {
-      cellSize: 40,
+      cellSize: 30,
       gap: 10,
       transform: {
         translate: {
           x: 0,
-          y: (Math.random() * 2 - 1) * 10,
+          y: 0,
         },
-
         scale: {
           x: 1,
           y: 1,
         },
-        rotate: -0.2,
+        rotate: 0,
         shear: {
           x: 0,
-          y: 0.2,
+          y: 0,
         },
       },
       fillStyle: {
@@ -38,8 +37,6 @@ export class ThrowUp {
         strokeWeight: 6,
       },
     };
-
-    // this.gap = -8;
 
     this.width = 0;
     this.initCharacters();
@@ -71,9 +68,13 @@ export class ThrowUp {
     p5.push();
     //MOVE TO CHARACTER POSITION
     p5.translate(
-      -this.width / 2 + this.characters[0].width / 2 + this.config.gap / 2,
-      0
+      -this.width / 2 + this.characters[0].width + this.config.gap / 2,
+      this.characters[0].height / 2
     );
+    // p5.translate(
+    //   -this.width / 2 + this.characters[0].width / 2 + this.config.gap / 2,
+    //   0
+    // );
 
     for (let i = 0; i < this.characters.length; i++) {
       // PRINT FROM LAST TO FIRST

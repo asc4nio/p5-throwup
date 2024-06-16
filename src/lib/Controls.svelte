@@ -3,6 +3,26 @@
 </script>
 
 <div id="controls">
+  <!-- background-color -->
+  <div class="control-item">
+    <label for="c-background-color">background:</label>
+    <input
+      id="c-background-color"
+      type="color"
+      on:input={(e) => {
+        console.log(e);
+        const color = e.target.value;
+        const r = parseInt(color.substr(1, 2), 16);
+        const g = parseInt(color.substr(3, 2), 16);
+        const b = parseInt(color.substr(5, 2), 16);
+        console.log(`red: ${r}, green: ${g}, blue: ${b}`);
+
+        $STATE.config.backgroundColor[0] = r;
+        $STATE.config.backgroundColor[1] = g;
+        $STATE.config.backgroundColor[2] = b;
+      }}
+    />
+  </div>
   <!-- text -->
   <div class="control-item">
     <label for="c-string">text:</label>
@@ -127,6 +147,26 @@
   </div>
   <!-- fill -->
   <div class="control-group" data-title="fill">
+    <!-- fill-color -->
+    <div class="control-item">
+      <label for="c-fill-color">color:</label>
+      <input
+        id="c-fill-color"
+        type="color"
+        on:input={(e) => {
+          console.log(e);
+          const color = e.target.value;
+          const r = parseInt(color.substr(1, 2), 16);
+          const g = parseInt(color.substr(3, 2), 16);
+          const b = parseInt(color.substr(5, 2), 16);
+          console.log(`red: ${r}, green: ${g}, blue: ${b}`);
+
+          $STATE.config.fillStyle.fill[0] = r;
+          $STATE.config.fillStyle.fill[1] = g;
+          $STATE.config.fillStyle.fill[2] = b;
+        }}
+      />
+    </div>
     <!-- fill-r -->
     <div class="control-item">
       <label for="c-fill-r">r:</label>
@@ -163,7 +203,7 @@
         bind:value={$STATE.config.fillStyle.fill[2]}
       />
     </div>
-    <!-- fill-b -->
+    <!-- fill-a -->
     <div class="control-item">
       <label for="c-fill-a">a:</label>
       <input
@@ -176,17 +216,53 @@
       />
     </div>
   </div>
-  <!-- thickness-y -->
-  <div class="control-item">
-    <label for="c-thickness">thickness:</label>
-    <input
-      id="c-thickness"
-      type="range"
-      min="0"
-      max="30"
-      step="0.01"
-      bind:value={$STATE.config.outlineStyle.strokeWeight}
-    />
+  <!-- stroke -->
+  <div class="control-group" data-title="stroke">
+    <!-- thickness -->
+    <div class="control-item">
+      <label for="c-thickness">thickness:</label>
+      <input
+        id="c-thickness"
+        type="range"
+        min="0"
+        max="30"
+        step="0.01"
+        bind:value={$STATE.config.outlineStyle.strokeWeight}
+      />
+    </div>
+    <!-- stroke-color -->
+    <div class="control-item">
+      <label for="c-stroke-color">color:</label>
+      <input
+        id="c-stroke-color"
+        type="color"
+        bind:value={$STATE.config.outlineStyle.stroke2}
+        on:input={(e) => {
+          console.log(e);
+          const color = e.target.value;
+          const r = parseInt(color.substr(1, 2), 16);
+          const g = parseInt(color.substr(3, 2), 16);
+          const b = parseInt(color.substr(5, 2), 16);
+          console.log(`red: ${r}, green: ${g}, blue: ${b}`);
+
+          $STATE.config.outlineStyle.stroke[0] = r;
+          $STATE.config.outlineStyle.stroke[1] = g;
+          $STATE.config.outlineStyle.stroke[2] = b;
+        }}
+      />
+    </div>
+    <!-- stroke-alpha -->
+    <div class="control-item">
+      <label for="c-stroke-alpha">alpha:</label>
+      <input
+        id="c-stroke-alpha"
+        type="range"
+        min="0"
+        max="255"
+        step="1"
+        bind:value={$STATE.config.outlineStyle.stroke[3]}
+      />
+    </div>
   </div>
 </div>
 
@@ -194,6 +270,7 @@
   #controls {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin: 1rem;
   }
