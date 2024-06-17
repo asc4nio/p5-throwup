@@ -58,9 +58,19 @@ export class ThrowUp {
         config.transform
       );
 
+      // PATCH FOR 2 and 4 COLS CHARACTERS
+      if (character.width == config.cellSize * 2) {
+        character.position.x -= this.config.cellSize;
+      } else if (character.width == config.cellSize * 4) {
+        character.position.x += this.config.cellSize;
+      }
+
       this.characters = [...this.characters, character];
+
+      // UPDATE WIDTH for each character added
       this.width += character.width + this.config.gap;
 
+      // UPDATE POSITION for next character
       printPos.x += character.width + this.config.gap;
     }
   }
@@ -72,6 +82,7 @@ export class ThrowUp {
       this.characters[0].height / 2
     );
 
+    // print each Character
     for (let i = 0; i < this.characters.length; i++) {
       // PRINT FROM LAST TO FIRST
       let invertedIndex = this.characters.length - 1 - i;

@@ -68,7 +68,7 @@ export class Character {
 
     // PRINT SHADOW
     p5.push();
-    p5.translate(-10, 10);
+    p5.translate(-15, 15);
     this.printLayer(p5, this.fillCells, {
       fill: [0],
       stroke: [0],
@@ -76,7 +76,9 @@ export class Character {
     });
     p5.pop();
 
+    // print fill
     this.printLayer(p5, this.fillCells, fillStyle);
+    // print outline
     this.printLayer(p5, this.outlineCells, outlineStyle);
   }
 
@@ -109,6 +111,7 @@ export class Character {
 
     p5.translate(-this.width / 2, -this.height / 2);
 
+    // PRINT CELLS
     for (let y = 0; y < _data.length; y++) {
       let currentRow = _data[y];
 
@@ -116,19 +119,18 @@ export class Character {
         let currentCell = currentRow[x];
 
         p5.push();
-
         // MOVE TO CELL PRINT POSITION
         p5.translate(
           printPos.x + this.cellSize / 2,
           printPos.y + this.cellSize / 2
         );
-        // p5.translate(printPos.x, printPos.y);
-
+        // print currentCell
         currentCell.print(p5, 0, 0, this.cellSize, this.cellSize, style);
-
         p5.pop();
 
+        // init next cell position
         printPos.x += this.cellSize;
+        // init next row position
         if (x == currentRow.length - 1) {
           printPos.x = -this.cellSize / 2;
           printPos.y += this.cellSize;

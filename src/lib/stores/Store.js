@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 
 export const STATE = writable({
-  string: "tuvwxyz",
+  string: "ascanio",
   position: { x: 0, y: 0 },
   config: {
     cellSize: 30,

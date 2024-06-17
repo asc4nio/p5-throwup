@@ -67,8 +67,8 @@ export const mySketch = (p5) => {
     p5.background(...state.config.backgroundColor);
     // p5.background(220);
 
-    w.print(p5);
-    b.print(bangLayer);
+    // w.print(p5);
+    // b.print(bangLayer);
     tup.print(tupLayer);
 
     // DEBUG CENTER LINES
