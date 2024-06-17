@@ -48,7 +48,7 @@
         id="c-size"
         type="range"
         min="1"
-        max="100"
+        max="200"
         step="1"
         bind:value={$STATE.config.cellSize}
       />
@@ -59,8 +59,8 @@
       <input
         id="c-rotate"
         type="range"
-        min="-1"
-        max="1"
+        min="-3.1416"
+        max="3.1416"
         step="0.01"
         bind:value={$STATE.config.transform.rotate}
       />

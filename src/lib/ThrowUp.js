@@ -71,10 +71,6 @@ export class ThrowUp {
       -this.width / 2 + this.characters[0].width + this.config.gap / 2,
       this.characters[0].height / 2
     );
-    // p5.translate(
-    //   -this.width / 2 + this.characters[0].width / 2 + this.config.gap / 2,
-    //   0
-    // );
 
     for (let i = 0; i < this.characters.length; i++) {
       // PRINT FROM LAST TO FIRST

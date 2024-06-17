@@ -670,6 +670,254 @@ export const LETTERS = {
     ],
   },
 
+  t: {
+    outline: [
+      //0
+      [
+        [["arc", PI]],
+        [["line-side", PI * 0.5]],
+        [["line-side"], ["arc", PI], ["line-side", PI]],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["line-side", PI]]],
+      //2
+      [
+        [["arc"], ["line-side", PI * 0.5]],
+        [["arc"]],
+        [
+          ["line-side", PI * 0.5],
+          ["arc", PI * 0.5],
+        ],
+      ],
+      //3
+      [
+        [["arc", PI * 1.5]],
+        [["arc", PI]],
+        [["line-side"], ["line-side", PI * 1], ["line-side", PI * 1.5]],
+      ],
+    ],
+    fill: [
+      //0
+      [
+        [["square"], ["arc", PI, "-"]],
+        [["square"]],
+        [["square"], ["arc", PI, "-"]],
+      ], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["arc"]], [["square"]], [["arc", PI * 0.5]]],
+      //3
+      [[["arc", PI * 1.5]], [["arc", PI]], [["square"]]],
+    ],
+  },
+
+  u: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", PI * 0.5], ["line-side", PI]],
+        [["arc"]],
+        [["arc", PI * 0.5]],
+      ],
+      //1
+      [[["line-side"], ["line-side", PI]], [["#"]], [["line-side", PI]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", PI]]],
+      //3
+      [[["arc", PI * 1.5]], [["line-side", PI * 1.5]], [["arc", PI]]],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["arc"]], [["arc", PI * 0.5]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["arc", PI * 1.5]], [["square"]], [["arc", PI]]],
+    ],
+  },
+
+  v: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", PI * 0.5]],
+        [
+          ["line-side", PI * 0.5],
+          ["line-side", PI],
+        ],
+        [
+          ["line-side", PI * 0.5],
+          ["line-side", PI],
+        ],
+      ],
+      //1
+      [[["line-side"]], [["line-side", PI]], [["line-side", PI]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", PI]]],
+      //3
+      [
+        [["line-side"], ["line-side", PI * 1.5]],
+        [["line-side", PI * 1.5]],
+        [["arc", PI]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["arc", PI]]],
+    ],
+  },
+
+  w: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", PI * 0.5]],
+        [["line-side", PI * 0.5], ["line-side"], ["line-side", PI]],
+        [
+          ["line-side", PI * 0.5],
+          ["line-side", PI * 1],
+        ],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["line-side", PI]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", PI]]],
+      //3
+      [
+        [["arc", PI * 1.5]],
+        [["line-side", PI * 1.5], ["line-center"]],
+        [["arc", PI]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["arc", PI * 1.5]], [["square"]], [["arc", PI]]],
+    ],
+  },
+
+  x: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", PI * 0.5]],
+        [["line-side", PI * 0.5], ["line-center"]],
+        [
+          ["line-side", PI * 0.5],
+          ["line-side", PI * 1],
+        ],
+      ],
+      //1
+      [[["arc", PI * 1.5]], [["#"]], [["arc", PI]]],
+      //2
+      [[["arc"]], [["#"]], [["arc", PI * 0.5]]],
+      //3
+      [
+        [["line-side"], ["line-side", PI * 1.5]],
+        [["line-side", PI * 1.5], ["line-center"]],
+        [
+          ["line-side", PI * 1.5],
+          ["line-side", PI * 1],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["arc", PI * 1.5]], [["square"]], [["arc", PI]]],
+      //2
+      [[["arc"]], [["square"]], [["arc", PI * 0.5]]],
+      //3
+      [[["square"]], [["square"]], [["square"]]],
+    ],
+  },
+
+  y: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", PI * 0.5]],
+        [["line-side", PI * 0.5]],
+        [["line-side"], ["line-side", PI * 0.5], ["line-side", PI * 1]],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["line-side"], ["line-side", PI]]],
+      //2
+      [[["arc", PI * 1.5]], [["#"]], [["line-side", PI]]],
+      //3
+      [
+        [["line-side"], ["line-side", PI * 0.5], ["line-side", PI * 1.5]],
+        [
+          ["line-side", PI * 1.5],
+          ["line-side", PI * 0.5],
+        ],
+        [["arc", PI]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["arc", PI * 1.5]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["arc", PI]]],
+    ],
+  },
+
+  z: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", PI * 0.5]],
+        [["line-side", PI * 0.5]],
+        [
+          ["line-side", PI * 0.5],
+          ["line-side", PI * 1],
+        ],
+      ],
+      //1
+      [[["line-side"], ["arc"]], [["arc", PI * 0.5]], [["line-side", PI]]],
+      //2
+      [
+        [["line-side"]],
+        [["arc", PI * 1.5]],
+        [
+          ["arc", PI],
+          ["line-side", PI],
+        ],
+      ],
+      //3
+      [
+        [["line-side"], ["line-side", PI * 1.5]],
+        [["line-side", PI * 1.5]],
+        [
+          ["line-side", PI * 1.5],
+          ["line-side", PI * 1],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["square"]]],
+    ],
+  },
+
   /*
   A: {
     outline: [

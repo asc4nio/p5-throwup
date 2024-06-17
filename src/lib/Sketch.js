@@ -71,6 +71,10 @@ export const mySketch = (p5) => {
     b.print(bangLayer);
     tup.print(tupLayer);
 
+    // DEBUG CENTER LINES
+    // tupLayer.line(0, -size.y, 0, size.y);
+    // tupLayer.line(-size.x, 0, size.x, 0);
+
     p5.image(bangLayer, 0, 0);
     p5.image(tupLayer, 0, 0);
   };

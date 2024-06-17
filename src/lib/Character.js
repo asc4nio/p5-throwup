@@ -118,14 +118,11 @@ export class Character {
         p5.push();
 
         // MOVE TO CELL PRINT POSITION
-        p5.translate(printPos.x, printPos.y);
-
-        // DRAW DEBUG CELL
-        // p5.push();
-        // p5.stroke(255, 0, 0);
-        // p5.strokeWeight(1);
-        // p5.rect(0, 0, this.cellSize, this.cellSize);
-        // p5.pop();
+        p5.translate(
+          printPos.x + this.cellSize / 2,
+          printPos.y + this.cellSize / 2
+        );
+        // p5.translate(printPos.x, printPos.y);
 
         currentCell.print(p5, 0, 0, this.cellSize, this.cellSize, style);
 
@@ -140,12 +137,15 @@ export class Character {
     }
 
     // DRAW DEBUG RECT
-    // p5.push();
-    // p5.noFill();
-    // p5.stroke(255, 0, 0);
-    // p5.rect(-this.cellSize / 2, -this.cellSize / 2, this.width, this.height);
-    // p5.pop();
+    // this.debug(p5);
 
+    p5.pop();
+  }
+  debug(p5) {
+    p5.push();
+    p5.noFill();
+    p5.stroke(255, 0, 0);
+    p5.rect(0, 0, this.width, this.height);
     p5.pop();
   }
 }

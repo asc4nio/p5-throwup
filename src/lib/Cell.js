@@ -34,7 +34,17 @@ export class Cell {
       shape.instance.print(p5, y, x, w, h);
       if (shape.action == "-") p5.noErase();
 
+      // DEBUG CELLS
+      // this.debug(p5, x, y, w, h);
+
       p5.pop();
     }
+  }
+  debug(p5, x, y, w, h) {
+    p5.push();
+    p5.stroke(255, 0, 0);
+    p5.strokeWeight(1);
+    p5.rect(x, y, w, h);
+    p5.pop();
   }
 }
