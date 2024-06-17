@@ -66,6 +66,16 @@ export class Character {
       strokeWeight: 8,
     };
 
+    // PRINT SHADOW
+    p5.push();
+    p5.translate(-10, 10);
+    this.printLayer(p5, this.fillCells, {
+      fill: [0],
+      stroke: [0],
+      strokeWeight: 0,
+    });
+    p5.pop();
+
     this.printLayer(p5, this.fillCells, fillStyle);
     this.printLayer(p5, this.outlineCells, outlineStyle);
   }
@@ -128,6 +138,14 @@ export class Character {
         }
       }
     }
+
+    // DRAW DEBUG RECT
+    // p5.push();
+    // p5.noFill();
+    // p5.stroke(255, 0, 0);
+    // p5.rect(-this.cellSize / 2, -this.cellSize / 2, this.width, this.height);
+    // p5.pop();
+
     p5.pop();
   }
 }

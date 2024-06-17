@@ -1,5 +1,5 @@
 import { ThrowUp } from "./ThrowUp";
-import { Bang } from "./Shape";
+import { Bang, Wall } from "./Shape";
 
 import { STATE } from "./stores/Store";
 import { get } from "svelte/store";
@@ -11,6 +11,7 @@ export const mySketch = (p5) => {
   };
   let tup, tupLayer;
   let b, bangLayer;
+  let w;
   // let string = get(STATE).string;
 
   let state = get(STATE);
@@ -40,13 +41,22 @@ export const mySketch = (p5) => {
     );
     tup = new ThrowUp(state.string, state.position, state.config);
 
+    w = new Wall(size, {
+      x: 40,
+      y: 20,
+    });
+
     // p5.image(tupLayer, 0, 0);
   };
 
   p5.draw = () => {
     // if (get(STATE) !== state) {
     state = get(STATE);
-    tup = new ThrowUp(state.string, state.position, state.config);
+    tup = new ThrowUp(
+      state.string.toLocaleLowerCase(),
+      state.position,
+      state.config
+    );
     // }
 
     // reset buffers
@@ -57,6 +67,7 @@ export const mySketch = (p5) => {
     p5.background(...state.config.backgroundColor);
     // p5.background(220);
 
+    w.print(p5);
     b.print(bangLayer);
     tup.print(tupLayer);
 

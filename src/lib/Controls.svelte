@@ -3,6 +3,11 @@
 </script>
 
 <div id="controls">
+  <!-- text -->
+  <div class="control-item">
+    <label for="c-string">text:</label>
+    <input id="c-string" type="text" bind:value={$STATE.string} />
+  </div>
   <!-- background-color -->
   <div class="control-item">
     <label for="c-background-color">background:</label>
@@ -23,23 +28,6 @@
       }}
     />
   </div>
-  <!-- text -->
-  <div class="control-item">
-    <label for="c-string">text:</label>
-    <input id="c-string" type="text" bind:value={$STATE.string} />
-  </div>
-  <!-- size -->
-  <div class="control-item">
-    <label for="c-size">size:</label>
-    <input
-      id="c-size"
-      type="range"
-      min="1"
-      max="100"
-      step="1"
-      bind:value={$STATE.config.cellSize}
-    />
-  </div>
   <!-- gap -->
   <div class="control-item">
     <label for="c-gap">gap:</label>
@@ -52,20 +40,34 @@
       bind:value={$STATE.config.gap}
     />
   </div>
-  <!-- rotate -->
-  <div class="control-item">
-    <label for="c-rotate">rotate:</label>
-    <input
-      id="c-rotate"
-      type="range"
-      min="-1"
-      max="1"
-      step="0.01"
-      bind:value={$STATE.config.transform.rotate}
-    />
+  <div class="control-group" data-title="TRANSFORM">
+    <!-- size -->
+    <div class="control-item">
+      <label for="c-size">size:</label>
+      <input
+        id="c-size"
+        type="range"
+        min="1"
+        max="100"
+        step="1"
+        bind:value={$STATE.config.cellSize}
+      />
+    </div>
+    <!-- rotate -->
+    <div class="control-item">
+      <label for="c-rotate">rotate:</label>
+      <input
+        id="c-rotate"
+        type="range"
+        min="-1"
+        max="1"
+        step="0.01"
+        bind:value={$STATE.config.transform.rotate}
+      />
+    </div>
   </div>
   <!-- translate -->
-  <div class="control-group" data-title="translate">
+  <div class="control-group" data-title="TRANSLATE">
     <!-- translate-x -->
     <div class="control-item">
       <label for="c-translate-x">x:</label>
@@ -92,7 +94,7 @@
     </div>
   </div>
   <!-- scale -->
-  <div class="control-group" data-title="scale">
+  <div class="control-group" data-title="SCALE">
     <!-- scale-x -->
     <div class="control-item">
       <label for="c-scale-x">x:</label>
@@ -119,7 +121,7 @@
     </div>
   </div>
   <!-- shear -->
-  <div class="control-group" data-title="shear">
+  <div class="control-group" data-title="SHEAR">
     <!-- shear-x -->
     <div class="control-item">
       <label for="c-shear-x">x:</label>
@@ -146,7 +148,7 @@
     </div>
   </div>
   <!-- fill -->
-  <div class="control-group" data-title="fill">
+  <div class="control-group" data-title="FILL">
     <!-- fill-color -->
     <div class="control-item">
       <label for="c-fill-color">color:</label>
@@ -167,42 +169,6 @@
         }}
       />
     </div>
-    <!-- fill-r -->
-    <div class="control-item">
-      <label for="c-fill-r">r:</label>
-      <input
-        id="c-fill-r"
-        type="range"
-        min="0"
-        max="255"
-        step="1"
-        bind:value={$STATE.config.fillStyle.fill[0]}
-      />
-    </div>
-    <!-- fill-g -->
-    <div class="control-item">
-      <label for="c-fill-g">g:</label>
-      <input
-        id="c-fill-g"
-        type="range"
-        min="0"
-        max="255"
-        step="1"
-        bind:value={$STATE.config.fillStyle.fill[1]}
-      />
-    </div>
-    <!-- fill-b -->
-    <div class="control-item">
-      <label for="c-fill-b">b:</label>
-      <input
-        id="c-fill-b"
-        type="range"
-        min="0"
-        max="255"
-        step="1"
-        bind:value={$STATE.config.fillStyle.fill[2]}
-      />
-    </div>
     <!-- fill-a -->
     <div class="control-item">
       <label for="c-fill-a">a:</label>
@@ -217,7 +183,7 @@
     </div>
   </div>
   <!-- stroke -->
-  <div class="control-group" data-title="stroke">
+  <div class="control-group" data-title="STROKE">
     <!-- thickness -->
     <div class="control-item">
       <label for="c-thickness">thickness:</label>

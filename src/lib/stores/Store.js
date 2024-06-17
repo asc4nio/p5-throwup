@@ -1,11 +1,11 @@
 import { writable } from "svelte/store";
 
 export const STATE = writable({
-  string: "abcde",
+  string: "mnopqrs",
   position: { x: 0, y: 0 },
   config: {
     cellSize: 30,
-    gap: -10,
+    gap: 0,
     transform: {
       translate: {
         x: 0,

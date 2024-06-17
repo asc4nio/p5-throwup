@@ -47,6 +47,7 @@ export class Bang {
   print(p5) {
     p5.push();
     p5.strokeWeight(this.smoothness);
+    p5.fill(255, 120);
     // draw full shape
     p5.beginShape();
     for (let i = 0; i < this.#anchors.length; i++) {
@@ -74,6 +75,50 @@ export class Bang {
     }
     p5.endShape(p5.CLOSE);
     p5.noErase();
+    p5.pop();
+  }
+}
+
+export class Wall {
+  #rows = 0;
+  #columns = 0;
+  constructor(_size, _bricksSize) {
+    this.size = _size || {
+      x: 400,
+      y: 300,
+    };
+    this.bricksSize = _bricksSize || {
+      x: 60,
+      y: 30,
+    };
+
+    this.#rows = this.size.x / this.bricksSize.x;
+    this.#columns = this.size.y / this.bricksSize.y;
+  }
+  print(p5) {
+    p5.push();
+    p5.noFill();
+    p5.stroke(0);
+    p5.strokeWeight(2);
+    for (let i = 0; i < this.#rows; i++) {
+      for (let j = 0; j < this.#columns; j++) {
+        if (j % 2) {
+          p5.rect(
+            i * this.bricksSize.x + this.bricksSize.x / 2,
+            j * this.bricksSize.y,
+            this.bricksSize.x,
+            this.bricksSize.y
+          );
+        } else {
+          p5.rect(
+            i * this.bricksSize.x,
+            j * this.bricksSize.y,
+            this.bricksSize.x,
+            this.bricksSize.y
+          );
+        }
+      }
+    }
     p5.pop();
   }
 }
