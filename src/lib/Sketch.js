@@ -1,8 +1,12 @@
+// https://www.npmjs.com/package/p5.capture
+
 import { ThrowUp } from "./ThrowUp";
-import { Bang, Wall } from "./Shape";
+import { Bang, Wall } from "./Decos";
 
 import { STATE } from "./stores/Store";
 import { get } from "svelte/store";
+
+import gsap from "gsap";
 
 export const mySketch = (p5) => {
   const size = {
@@ -12,34 +16,38 @@ export const mySketch = (p5) => {
   let tup, tupLayer;
   let b, bangLayer;
   let w;
-  // let string = get(STATE).string;
 
   let state = get(STATE);
 
   p5.setup = () => {
+    // p5.frameRate(60);
+    p5.pixelDensity(4);
     p5.createCanvas(size.x, size.y);
     tupLayer = p5.createGraphics(size.x, size.y);
     bangLayer = p5.createGraphics(size.x, size.y);
 
-    // CENTER LAYER
+    p5.noSmooth();
+    tupLayer.noSmooth();
+    bangLayer.noSmooth();
+
+    // CENTER LAYERS
     tupLayer.translate(size.x / 2, size.y / 2);
     bangLayer.translate(size.x / 2, size.y / 2);
 
-    // DEBUG CENTER LINES
-    // tupLayer.line(0, -size.y, 0, size.y);
-    // tupLayer.line(-size.x, 0, size.x, 0);
-
     b = new Bang(
-      12,
+      9,
       800,
-      1,
+      0.1,
       {
         x: 1.2,
         y: 0.5,
       },
       0.4
     );
-    tup = new ThrowUp(state.string, state.position, state.config);
+    console.log(b);
+
+    tup = new ThrowUp(state.tupConfig, state.charConfig);
+    console.log(tup);
 
     w = new Wall(size, {
       x: 40,
@@ -47,28 +55,60 @@ export const mySketch = (p5) => {
     });
 
     // p5.image(tupLayer, 0, 0);
+
+    gsap
+      .timeline({ repeat: -1, yoyo: true })
+      .to(
+        tup.charConfig.transform,
+        {
+          rotate: 0.2,
+          duration: 2,
+          ease: "power4.inOut",
+        },
+        "0"
+      )
+      .to(
+        tup.charConfig.transform.shear,
+        {
+          y: 0.5,
+          x: 0.5,
+          duration: 2,
+          ease: "power4.inOut",
+        },
+        "0"
+      )
+      .to(
+        tup.charConfig.transform.scale,
+        {
+          y: 3,
+          // x: 0.3,
+          duration: 2,
+          ease: "power4.inOut",
+        },
+        "0"
+      )
+      .to(
+        tup.tupConfig,
+        {
+          rotation: -0.2,
+          duration: 2,
+          ease: "power4.inOut",
+        },
+        "0"
+      );
   };
 
   p5.draw = () => {
-    // if (get(STATE) !== state) {
-    state = get(STATE);
-    tup = new ThrowUp(
-      state.string.toLocaleLowerCase(),
-      state.position,
-      state.config
-    );
-    // }
-
     // reset buffers
     p5.clear();
     tupLayer.clear();
     bangLayer.clear();
 
-    p5.background(...state.config.backgroundColor);
+    p5.background(...state.bgConfig.color);
     // p5.background(220);
 
-    // w.print(p5);
-    // b.print(bangLayer);
+    w.print(p5);
+    b.print(bangLayer);
     tup.print(tupLayer);
 
     // DEBUG CENTER LINES

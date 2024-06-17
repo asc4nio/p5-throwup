@@ -40,7 +40,7 @@
       bind:value={$STATE.config.gap}
     />
   </div>
-  <div class="control-group" data-title="TRANSFORM">
+  <div class="control-group" data-title="CHARACTERS">
     <!-- size -->
     <div class="control-item">
       <label for="c-size">size:</label>
@@ -192,7 +192,7 @@
         type="range"
         min="0"
         max="30"
-        step="0.01"
+        step="1"
         bind:value={$STATE.config.outlineStyle.strokeWeight}
       />
     </div>

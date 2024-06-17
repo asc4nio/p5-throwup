@@ -1,11 +1,14 @@
 import { writable } from "svelte/store";
 
 export const STATE = writable({
-  string: "ascanio",
-  position: { x: 0, y: 0 },
-  config: {
+  tupConfig: {
+    string: "giorgia",
+    position: { x: 0, y: 0 },
+    rotation: 0,
+    gap: -10,
+  },
+  charConfig: {
     cellSize: 30,
-    gap: 0,
     transform: {
       translate: {
         x: 0,
@@ -21,16 +24,20 @@ export const STATE = writable({
         y: 0.0,
       },
     },
-    fillStyle: {
-      fill: [255, 255, 0, 255],
-      stroke: [0],
-      strokeWeight: 0,
+    style: {
+      fill: {
+        fill: [255, 0, 255],
+        stroke: [255, 0, 255],
+        strokeWeight: 1,
+      },
+      outline: {
+        fill: [0, 0],
+        stroke: [0, 0, 0],
+        strokeWeight: 2,
+      },
     },
-    outlineStyle: {
-      fill: [0, 0, 0, 0],
-      stroke: [0, 0, 0, 255],
-      strokeWeight: 6,
-    },
-    backgroundColor: [50, 50, 50, 255],
+  },
+  bgConfig: {
+    color: [50, 50, 50, 255],
   },
 });

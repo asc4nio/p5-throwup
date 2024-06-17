@@ -1,84 +1,100 @@
 import { Character } from "./Character";
 
 export class ThrowUp {
-  constructor(string, position, _config) {
-    this.string = string || "abc";
-    this.position = position || { x: 0, y: 0 };
+  width = 0;
 
-    this.splittedString = this.string.split("");
-    this.characters = [];
+  tupConfig = {
+    string: "ascanio",
+    position: { x: 0, y: 0 },
+    rotation: 0,
+    gap: -10,
+  };
 
-    this.config = _config || {
-      cellSize: 30,
-      gap: 10,
-      transform: {
-        translate: {
-          x: 0,
-          y: 0,
-        },
-        scale: {
-          x: 1,
-          y: 1,
-        },
-        rotate: 0,
-        shear: {
-          x: 0,
-          y: 0,
-        },
+  charConfig = {
+    cellSize: 30,
+    gap: 10,
+    transform: {
+      translate: {
+        x: 0,
+        y: 0,
       },
-      fillStyle: {
+      scale: {
+        x: 1,
+        y: 1,
+      },
+      rotate: 0,
+      shear: {
+        x: 0,
+        y: 0,
+      },
+    },
+    style: {
+      fill: {
         fill: [255, 255, 0],
         stroke: [0],
         strokeWeight: 0,
       },
-      outlineStyle: {
+      outline: {
         fill: [0, 0],
         stroke: [255, 0, 0],
         strokeWeight: 6,
       },
-    };
+    },
+  };
 
-    this.width = 0;
+  constructor(_tupConfig, _charConfig) {
+    this.characters = [];
+
+    if (_tupConfig) this.tupConfig = _tupConfig;
+    if (_charConfig) this.charConfig = _charConfig;
+
     this.initCharacters();
   }
   initCharacters() {
+    // from string to array of characters
+    let splittedString = this.tupConfig.string.split("");
+
+    // init print position
     let printPos = {
-      x: this.position.x,
-      y: this.position.y,
+      x: this.tupConfig.position.x,
+      y: this.tupConfig.position.y,
     };
 
-    for (let i = 0; i < this.splittedString.length; i++) {
-      // EACH CHARACTER STATE
-      let config = this.config;
-
+    // init each character
+    for (let i = 0; i < splittedString.length; i++) {
       let character = new Character(
-        this.splittedString[i],
+        splittedString[i],
         { x: printPos.x, y: printPos.y },
-        config.cellSize,
-        config.transform
+        this.charConfig.cellSize
       );
 
+      character.setTransform(this.charConfig.transform);
+      // console.log(character);
+
       // PATCH FOR 2 and 4 COLS CHARACTERS
-      if (character.width == config.cellSize * 2) {
-        character.position.x -= this.config.cellSize;
-      } else if (character.width == config.cellSize * 4) {
-        character.position.x += this.config.cellSize;
+      if (character.width == this.charConfig.cellSize * 2) {
+        character.position.x -= this.charConfig.cellSize;
+      } else if (character.width == this.charConfig.cellSize * 4) {
+        character.position.x += this.charConfig.cellSize;
       }
 
+      // ADD CHARACTER TO LIST
       this.characters = [...this.characters, character];
 
-      // UPDATE WIDTH for each character added
-      this.width += character.width + this.config.gap;
+      // UPDATE this.width for each character added
+      this.width += character.width + this.tupConfig.gap;
 
-      // UPDATE POSITION for next character
-      printPos.x += character.width + this.config.gap;
+      // UPDATE print POSITION for next character
+      printPos.x += character.width + this.tupConfig.gap;
     }
   }
   print(p5) {
     p5.push();
+    // APPLY ROTATION
+    p5.rotate(3.1416 * this.tupConfig.rotation);
     //MOVE TO CHARACTER POSITION
     p5.translate(
-      -this.width / 2 + this.characters[0].width + this.config.gap / 2,
+      -this.width / 2 + this.characters[0].width + this.tupConfig.gap / 2,
       this.characters[0].height / 2
     );
 
@@ -88,8 +104,8 @@ export class ThrowUp {
       let invertedIndex = this.characters.length - 1 - i;
       this.characters[invertedIndex].print(
         p5,
-        this.config.fillStyle,
-        this.config.outlineStyle
+        this.charConfig.style.fill,
+        this.charConfig.style.outline
       );
     }
     p5.pop();

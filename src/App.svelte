@@ -12,5 +12,5 @@
 
 <main>
   <div id="sketch"></div>
-  <Controls></Controls>
+  <!-- <Controls></Controls> -->
 </main>

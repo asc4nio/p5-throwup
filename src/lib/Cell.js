@@ -26,7 +26,7 @@ export class Cell {
       // MOVE FOR ROTATION
       p5.translate(w * 0.5, h * 0.5);
       // SHAPE ROTATION
-      p5.rotate(shape.instance.rotation);
+      p5.rotate(3.1416 * Number(shape.instance.rotation));
       // RESET POSITION
       p5.translate(-w * 0.5, -h * 0.5);
 
