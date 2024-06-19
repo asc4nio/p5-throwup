@@ -9,11 +9,19 @@ export class Shape {
     this.rotation = rotation || 0;
   }
 
-  print(p5, x, y, w, h) {
-    if (this.variant) {
-      SHAPES[this.shape][this.variant](p5, x, y, w, h);
-    } else {
-      SHAPES[this.shape](p5, x, y, w, h);
-    }
+  print(p5, x, y, w, h, action) {
+    // if (action == "-") p5.beginClip({ invert: true });
+
+    this.variant
+      ? SHAPES[this.shape][this.variant](p5, x, y, w, h)
+      : SHAPES[this.shape](p5, x, y, w, h);
+
+    // if (this.variant) {
+    //   SHAPES[this.shape][this.variant](p5, x, y, w, h);
+    // } else {
+    //   SHAPES[this.shape](p5, x, y, w, h);
+    // }
+
+    // if (action == "-") p5.endClip();
   }
 }

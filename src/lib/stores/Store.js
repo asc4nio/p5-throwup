@@ -1,14 +1,51 @@
 import { writable } from "svelte/store";
 
+export const TUP_CONFIG = writable({
+  string: "ascanio",
+  position: { x: 0, y: 0 },
+  rotation: 0,
+  gap: -10,
+});
+export const CHAR_CONFIG = writable({
+  cellSize: 40,
+  transform: {
+    translate: {
+      x: 0,
+      y: 0,
+    },
+    scale: {
+      x: 1,
+      y: 1,
+    },
+    rotate: 0,
+    shear: {
+      x: 0,
+      y: 0.0,
+    },
+  },
+  style: {
+    fill: {
+      fill: [255, 255, 255],
+      stroke: [255, 255, 255],
+      strokeWeight: 1,
+    },
+    outline: {
+      fill: [0, 0],
+      stroke: [0, 0, 0],
+      strokeWeight: 4,
+    },
+  },
+});
+
 export const STATE = writable({
   tupConfig: {
-    string: "giorgia",
+    string: "ascanio",
     position: { x: 0, y: 0 },
     rotation: 0,
     gap: -10,
   },
   charConfig: {
-    cellSize: 30,
+    cellSize: 40,
     transform: {
       translate: {
         x: 0,
@@ -26,14 +63,14 @@ export const STATE = writable({
     },
     style: {
       fill: {
-        fill: [255, 0, 255],
-        stroke: [255, 0, 255],
+        fill: [255, 255, 255],
+        stroke: [255, 255, 255],
         strokeWeight: 1,
       },
       outline: {
         fill: [0, 0],
         stroke: [0, 0, 0],
-        strokeWeight: 2,
+        strokeWeight: 4,
       },
     },
   },

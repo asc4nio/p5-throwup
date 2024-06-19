@@ -4,7 +4,7 @@ export class ThrowUp {
   width = 0;
 
   tupConfig = {
-    string: "ascanio",
+    string: "abc",
     position: { x: 0, y: 0 },
     rotation: 0,
     gap: -10,
@@ -81,11 +81,16 @@ export class ThrowUp {
       // ADD CHARACTER TO LIST
       this.characters = [...this.characters, character];
 
-      // UPDATE this.width for each character added
-      this.width += character.width + this.tupConfig.gap;
-
       // UPDATE print POSITION for next character
+      // printPos.x += character.width;
       printPos.x += character.width + this.tupConfig.gap;
+    }
+
+    this.updateWidth();
+  }
+  updateWidth() {
+    for (let char of this.characters) {
+      this.width += char.width + this.tupConfig.gap;
     }
   }
   print(p5) {
@@ -110,4 +115,39 @@ export class ThrowUp {
     }
     p5.pop();
   }
+  // buffersPrint(p5) {
+  //   p5.push();
+  //   // APPLY ROTATION
+  //   // p5.rotate(3.1416 * this.tupConfig.rotation);
+  //   // //MOVE TO CHARACTER POSITION
+  //   // p5.translate(
+  //   //   -this.width / 2 + this.characters[0].width + this.tupConfig.gap / 2,
+  //   //   this.characters[0].height / 2
+  //   // );
+
+  //   // print each Character
+  //   for (let i = 0; i < this.characters.length; i++) {
+  //     let buff = p5.createGraphics(800, 800);
+  //     buff.push();
+  //     buff.rotate(3.1416 * this.tupConfig.rotation);
+  //     //MOVE TO CHARACTER POSITION
+  //     buff.translate(
+  //       -this.width / 2 + this.characters[0].width + this.tupConfig.gap / 2,
+  //       this.characters[0].height / 2
+  //     );
+
+  //     // PRINT FROM LAST TO FIRST
+  //     let invertedIndex = this.characters.length - 1 - i;
+  //     this.characters[invertedIndex].print(
+  //       buff,
+  //       this.charConfig.style.fill,
+  //       this.charConfig.style.outline
+  //     );
+
+  //     p5.image(buff, 0, 0); // print image
+
+  //     buff.pop();
+  //   }
+  //   p5.pop();
+  // }
 }

@@ -4,6 +4,7 @@ export const SHAPES = {
   },
   square: (p5, x, y, w, h) => {
     p5.rect(x, y, w, h);
+    // p5.quad(x, y, x + w, y, x + w, y + h, w, y + h, 1, 1);
   },
   point: {
     center: (p5, x, y, w, h) => {
@@ -26,6 +27,12 @@ export const SHAPES = {
   },
   arc: (p5, x, y, w, h) => {
     p5.arc(x + w, y + h, w * 2, h * 2, p5.PI * 1, p5.PI * 1.5);
+  },
+  arcI: (p5, x, y, w, h) => {
+    p5.beginClip({ invert: true });
+    p5.circle(x + w, y + h, w * 2);
+    p5.endClip();
+    p5.rect(x, y, w, h);
   },
 };
 
@@ -488,7 +495,7 @@ export const LETTERS = {
       //1
       [[["line-side"]], [["#"]], [["line-side", 1]]],
       //2
-      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      [[["line-side"]], [["point-corner", 0.5]], [["line-side", 1]]],
       //3
       [[["arc", 1.5]], [["line-side", 1.5]], [["arc", 1]]],
     ],
@@ -662,11 +669,9 @@ export const LETTERS = {
     ],
     fill: [
       //0
-      [
-        [["square"], ["arc", 1, "-"]],
-        [["square"]],
-        [["square"], ["arc", 1, "-"]],
-      ], //1
+      [[["arcI", 1]], [["square"]], [["arcI", 1]]],
+      // [[["arcI", 1]], [["square"]], [["arc", 1, "-"], ["square"]]],
+      //1
       [[["square"]], [["square"]], [["square"]]],
       //2
       [[["arc"]], [["square"]], [["arc", 0.5]]],
