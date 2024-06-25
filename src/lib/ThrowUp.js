@@ -1,63 +1,61 @@
 import { Character } from "./Character";
+import gsap from "gsap";
 
 export class ThrowUp {
   width = 0;
 
-  tupConfig = {
-    string: "abc",
-    position: { x: 0, y: 0 },
-    rotation: 0,
-    gap: -10,
-  };
+  constructor(_text, _position, _rotation, _gap, _charConfig) {
+    this.position = _position || { x: 0, y: 0 };
+    this.rotation = _rotation || 0;
+    this.gap = _gap || 10;
 
-  charConfig = {
-    cellSize: 30,
-    gap: 10,
-    transform: {
-      translate: {
-        x: 0,
-        y: 0,
-      },
-      scale: {
-        x: 1,
-        y: 1,
-      },
-      rotate: 0,
-      shear: {
-        x: 0,
-        y: 0,
-      },
-    },
-    style: {
-      fill: {
-        fill: [255, 255, 0],
-        stroke: [0],
-        strokeWeight: 0,
-      },
-      outline: {
-        fill: [0, 0],
-        stroke: [255, 0, 0],
-        strokeWeight: 6,
-      },
-    },
-  };
+    this.string = _text || "abc";
 
-  constructor(_tupConfig, _charConfig) {
+    this.charConfig = _charConfig || {
+      cellSize: 30,
+      style: {
+        fill: {
+          fill: [255],
+          stroke: [0],
+          strokeWeight: 0,
+        },
+        outline: {
+          fill: [0, 0],
+          stroke: [0],
+          strokeWeight: 4,
+        },
+      },
+      transform: {
+        translate: {
+          x: 0,
+          y: 0,
+        },
+        rotate: 0,
+        scale: {
+          x: 1,
+          y: 1,
+        },
+        shear: {
+          x: 0,
+          y: 0,
+        },
+      },
+    };
+
+    this.init(_text);
+  }
+
+  init(_text) {
+    let string = _text || this.string;
     this.characters = [];
 
-    if (_tupConfig) this.tupConfig = _tupConfig;
-    if (_charConfig) this.charConfig = _charConfig;
-
-    this.initCharacters();
-  }
-  initCharacters() {
     // from string to array of characters
-    let splittedString = this.tupConfig.string.split("");
+    let splittedString = string.split("");
 
     // init print position
     let printPos = {
-      x: this.tupConfig.position.x,
-      y: this.tupConfig.position.y,
+      x: this.position.x,
+      y: this.position.y,
     };
 
     // init each character
@@ -69,7 +67,6 @@ export class ThrowUp {
       );
 
       character.setTransform(this.charConfig.transform);
-      // console.log(character);
 
       // PATCH FOR 2 and 4 COLS CHARACTERS
       if (character.width == this.charConfig.cellSize * 2) {
@@ -82,72 +79,52 @@ export class ThrowUp {
       this.characters = [...this.characters, character];
 
       // UPDATE print POSITION for next character
-      // printPos.x += character.width;
-      printPos.x += character.width + this.tupConfig.gap;
+      printPos.x += character.width;
     }
 
     this.updateWidth();
   }
+
   updateWidth() {
+    let width = 0;
     for (let char of this.characters) {
-      this.width += char.width + this.tupConfig.gap;
+      width += char.width + this.gap;
+    }
+    this.width = width;
+  }
+
+  update(_position, _rotation, _gap) {
+    this.position = _position;
+    this.rotation = _rotation;
+    this.gap = _gap;
+
+    for (let character of this.characters) {
+      character.setTransform(this.charConfig.transform);
     }
   }
+
   print(p5) {
+    this.updateWidth();
+
     p5.push();
+    // MOVE TO POSITION
+
+    p5.translate(this.position.x, this.position.y);
+
     // APPLY ROTATION
-    p5.rotate(3.1416 * this.tupConfig.rotation);
-    //MOVE TO CHARACTER POSITION
-    p5.translate(
-      -this.width / 2 + this.characters[0].width + this.tupConfig.gap / 2,
-      this.characters[0].height / 2
-    );
+    p5.rotate(3.1416 * this.rotation);
+
+    p5.translate(this.characters[0].width * 1, this.characters[0].height / 2);
+    p5.translate(-this.width / 2, 0);
 
     // print each Character
     for (let i = 0; i < this.characters.length; i++) {
       // PRINT FROM LAST TO FIRST
       let invertedIndex = this.characters.length - 1 - i;
-      this.characters[invertedIndex].print(
-        p5,
-        this.charConfig.style.fill,
-        this.charConfig.style.outline
-      );
+      this.characters[invertedIndex].print(p5, this.charConfig.style);
+
+      p5.translate(this.gap, 0);
     }
     p5.pop();
   }
-  // buffersPrint(p5) {
-  //   p5.push();
-  //   // APPLY ROTATION
-  //   // p5.rotate(3.1416 * this.tupConfig.rotation);
-  //   // //MOVE TO CHARACTER POSITION
-  //   // p5.translate(
-  //   //   -this.width / 2 + this.characters[0].width + this.tupConfig.gap / 2,
-  //   //   this.characters[0].height / 2
-  //   // );
-
-  //   // print each Character
-  //   for (let i = 0; i < this.characters.length; i++) {
-  //     let buff = p5.createGraphics(800, 800);
-  //     buff.push();
-  //     buff.rotate(3.1416 * this.tupConfig.rotation);
-  //     //MOVE TO CHARACTER POSITION
-  //     buff.translate(
-  //       -this.width / 2 + this.characters[0].width + this.tupConfig.gap / 2,
-  //       this.characters[0].height / 2
-  //     );
-
-  //     // PRINT FROM LAST TO FIRST
-  //     let invertedIndex = this.characters.length - 1 - i;
-  //     this.characters[invertedIndex].print(
-  //       buff,
-  //       this.charConfig.style.fill,
-  //       this.charConfig.style.outline
-  //     );
-
-  //     p5.image(buff, 0, 0); // print image
-
-  //     buff.pop();
-  //   }
-  //   p5.pop();
-  // }
 }
