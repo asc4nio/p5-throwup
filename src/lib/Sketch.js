@@ -3,12 +3,14 @@
 import { ThrowUp } from "./ThrowUp";
 import { Bang, Wall } from "./Decos";
 
-import { STATE, TUP_CONFIG, CHAR_CONFIG } from "./stores/Store";
+import { STATE } from "./stores/Store";
 import { get } from "svelte/store";
 
-import gsap from "gsap";
+// import gsap from "gsap";
 
 export const mySketch = (p5) => {
+  let state = get(STATE);
+
   const size = {
     x: 800,
     y: 800,
@@ -16,10 +18,6 @@ export const mySketch = (p5) => {
   let tup, tupLayer;
   let b, bangLayer;
   let w;
-
-  // let state = get(STATE);
-  let tupState = get(TUP_CONFIG);
-  let charState = get(CHAR_CONFIG);
 
   p5.setup = () => {
     // p5.frameRate(60);
@@ -48,7 +46,14 @@ export const mySketch = (p5) => {
     );
     console.log(b);
 
-    tup = new ThrowUp(tupState, charState);
+    tup = new ThrowUp(
+      state.text,
+      state.position,
+      state.rotation,
+      state.gap,
+      state.charConfig
+    );
+    // tup.animate();
     console.log(tup);
 
     w = new Wall(size, {
@@ -56,75 +61,78 @@ export const mySketch = (p5) => {
       y: 20,
     });
 
-    (() => {
-      gsap
-        .timeline({ repeat: -1, yoyo: true })
-        .to(
-          tup.charConfig.transform,
-          {
-            rotate: 0.2,
-            duration: 2,
-            ease: "power4.inOut",
-          },
-          "0"
-        )
-        .to(
-          tup.charConfig.transform.shear,
-          {
-            y: 0.5,
-            x: 0.5,
-            duration: 2,
-            ease: "power4.inOut",
-          },
-          "0"
-        )
-        .to(
-          tup.charConfig.transform.scale,
-          {
-            y: 3,
-            x: 0.5,
-            duration: 2,
-            ease: "power4.inOut",
-          },
-          "0"
-        )
-        .to(
-          tup.tupConfig,
-          {
-            rotation: -0.2,
-            duration: 2,
-            ease: "power4.inOut",
-          },
-          "0"
-        )
-        .to(
-          tup.charConfig.style.outline,
-          {
-            strokeWeight: 1,
-            duration: 2,
-            ease: "power4.inOut",
-          },
-          "0"
-        );
-    })();
+    // setTimeout(() => {
+    //   tup.updateString("ascanio");
+    // }, 2000);
+
+    // (() => {
+    //   gsap
+    //     .timeline({ repeat: -1, yoyo: true })
+    //     .to(
+    //       tup.charConfig.transform,
+    //       {
+    //         rotate: 0.2,
+    //         duration: 2,
+    //         ease: "power4.inOut",
+    //       },
+    //       "0"
+    //     )
+    //     .to(
+    //       tup.charConfig.transform.shear,
+    //       {
+    //         y: 0.5,
+    //         x: 0.5,
+    //         duration: 2,
+    //         ease: "power4.inOut",
+    //       },
+    //       "0"
+    //     )
+    //     .to(
+    //       tup.charConfig.transform.scale,
+    //       {
+    //         y: 3,
+    //         x: 0.5,
+    //         duration: 2,
+    //         ease: "power4.inOut",
+    //       },
+    //       "0"
+    //     )
+    //     .to(
+    //       tup.tupConfig,
+    //       {
+    //         rotation: -0.2,
+    //         duration: 2,
+    //         ease: "power4.inOut",
+    //       },
+    //       "0"
+    //     )
+    //     .to(
+    //       tup.charConfig.style.outline,
+    //       {
+    //         strokeWeight: 1,
+    //         duration: 2,
+    //         ease: "power4.inOut",
+    //       },
+    //       "0"
+    //     );
+    // })();
   };
 
   p5.draw = () => {
-    // tupState = get(TUP_CONFIG);
+    // console.log(tup.rotation);
+
+    tup.update(state.position, state.rotation, state.gap);
 
     // reset buffers
     p5.clear();
     tupLayer.clear();
     bangLayer.clear();
 
-    // p5.background(...state.bgConfig.color);
-    p5.background(220);
+    p5.background(125);
 
-    // w.print(p5);
+    w.print(p5);
     // b.print(bangLayer);
     tup.print(tupLayer);
-
-    // tup.buffersPrint(p5);
 
     // DEBUG CENTER LINES
     // tupLayer.line(0, -size.y, 0, size.y);
@@ -135,4 +143,8 @@ export const mySketch = (p5) => {
   };
 
   p5.windowResized = () => {};
+
+  p5.resetTup = () => {
+    tup.init(state.text);
+  };
 };
