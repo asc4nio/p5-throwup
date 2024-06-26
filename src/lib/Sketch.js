@@ -12,8 +12,8 @@ export const mySketch = (p5) => {
   let state = get(STATE);
 
   const size = {
-    x: 800,
-    y: 800,
+    x: 540,
+    y: 540,
   };
   let tup, tupLayer;
   let b, bangLayer;

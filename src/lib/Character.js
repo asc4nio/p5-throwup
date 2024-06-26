@@ -51,6 +51,11 @@ export class Character {
     this.height = this.fillCells.length * this.cellSize;
     // char width = fillCells's first row items count * cell size
     this.width = this.fillCells[0].length * this.cellSize;
+
+    this.pivot = {
+      x: this.position.x - this.width / 2,
+      y: this.position.y - this.height / 2,
+    };
   }
 
   // used by initCells to populate cells from data
@@ -79,6 +84,8 @@ export class Character {
     }
     this.printCells(p5, this.fillCells, fillStyle);
     this.printCells(p5, this.outlineCells, outlineStyle);
+
+    // p5.rect(this.pivot.x, this.pivot.y, 10, 10);
   }
 
   // print one layer one style
@@ -177,6 +184,29 @@ export class Character {
 }
 
 const LETTERS = {
+  " ": {
+    outline: [
+      //0
+      [[["#"]]],
+      //1
+      [[["#"]]],
+      //2
+      [[["#"]]],
+      //3
+      [[["#"]]],
+    ],
+    fill: [
+      //0
+      [[["#"]]],
+      //1
+      [[["#"]]],
+
+      //2
+      [[["#"]]],
+      //3
+      [[["#"]]],
+    ],
+  },
   a: {
     outline: [
       //0

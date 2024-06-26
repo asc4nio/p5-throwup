@@ -60,8 +60,9 @@
       label="shear"
       picker="inline"
       userExpandable={true}
-      min={-2}
-      max={2}
+      min={-1}
+      max={1}
+      amount={0.001}
     />
 
     <Color
