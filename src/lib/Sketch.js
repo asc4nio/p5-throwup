@@ -2,6 +2,7 @@
 
 import { ThrowUp } from "./ThrowUp";
 import { Bang, Wall } from "./Decos";
+// import { Character, Word } from "./Refactor";
 
 import { STATE } from "./stores/Store";
 import { get } from "svelte/store";
@@ -19,6 +20,8 @@ export const mySketch = (p5) => {
   let b, bangLayer;
   let w;
 
+  // let char;
+
   p5.setup = () => {
     // p5.frameRate(60);
     p5.pixelDensity(4);
@@ -34,6 +37,9 @@ export const mySketch = (p5) => {
     tupLayer.translate(size.x / 2, size.y / 2);
     bangLayer.translate(size.x / 2, size.y / 2);
 
+    // char = new Word("aaaaaa");
+    // console.log(char);
+
     b = new Bang(
       9,
       800,
@@ -44,7 +50,7 @@ export const mySketch = (p5) => {
       },
       0.4
     );
-    console.log(b);
+    // console.log(b);
 
     tup = new ThrowUp(
       state.text,
@@ -54,7 +60,7 @@ export const mySketch = (p5) => {
       state.charConfig
     );
     // tup.animate();
-    console.log(tup);
+    // console.log(tup);
 
     w = new Wall(size, {
       x: 40,
@@ -133,10 +139,11 @@ export const mySketch = (p5) => {
     w.print(p5);
     // b.print(bangLayer);
     tup.print(tupLayer);
+    // char.print(tupLayer);
 
     // DEBUG CENTER LINES
-    // tupLayer.line(0, -size.y, 0, size.y);
-    // tupLayer.line(-size.x, 0, size.x, 0);
+    tupLayer.line(0, -size.y, 0, size.y);
+    tupLayer.line(-size.x, 0, size.x, 0);
 
     p5.image(bangLayer, 0, 0);
     p5.image(tupLayer, 0, 0);
