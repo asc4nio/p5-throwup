@@ -4,20 +4,52 @@
   import {
     Pane,
     Folder,
+    Button,
     Point,
     Text,
     Wheel,
     Color,
     Slider,
     Checkbox,
+    AutoObject,
+    List,
   } from "svelte-tweakpane-ui";
+
+  const bgTypes = ["wall", "bang"];
 </script>
 
 <Pane position={"inline"} title="ThrowUp">
-  <!-- <Folder expanded title="ThrowUp"> -->
+  <!-- <Point
+    bind:value={$STATE.size}
+    expanded={false}
+    label="size"
+    picker="inline"
+    userExpandable={true}
+    min={0}
+    max={540}
+    on:change={p5.resize}
+  /> -->
   <Text bind:value={$STATE.text} label="text" on:change={p5.resetTup} />
 
-  <Point
+  <Folder expanded={false} title="ThrowUp">
+    <Wheel bind:value={$STATE.gap} label="gap" />
+    <AutoObject bind:object={$STATE.tupTransform} />
+  </Folder>
+  <Folder expanded={false} title="Characters">
+    <AutoObject bind:object={$STATE.charTransform} />
+  </Folder>
+  <Folder expanded={false} title="Style">
+    <AutoObject bind:object={$STATE.style} />
+  </Folder>
+  <Folder expanded={false} title="Background">
+    <Color bind:value={$STATE.background.color} label="Color" />
+    <List bind:value={$STATE.background.type} label="Type" options={bgTypes} />
+    <!-- <AutoObject bind:object={$STATE.background} /> -->
+  </Folder>
+
+  <Button on:click={() => p5.save()} title="Save image" />
+
+  <!-- <Point
     bind:value={$STATE.position}
     expanded={false}
     label="position"
@@ -28,9 +60,9 @@
   />
 
   <Wheel bind:value={$STATE.rotation} amount={0.001} label="rotation" />
-  <Wheel bind:value={$STATE.gap} label="gap" />
-  <!-- </Folder> -->
-  <Folder expanded title="Characters">
+  <Wheel bind:value={$STATE.gap} label="gap" /> -->
+
+  <!-- <Folder expanded title="Characters">
     <Point
       bind:value={$STATE.charConfig.transform.translate}
       expanded={false}
@@ -67,7 +99,7 @@
 
     <Color
       on:change={(e) => {
-        console.log(e);
+        //console.log(e);
       }}
       bind:value={$STATE.charConfig.style.fill.fill}
       label="Fill Color"
@@ -75,7 +107,7 @@
     />
     <Color
       on:change={(e) => {
-        console.log(e);
+        //console.log(e);
       }}
       bind:value={$STATE.charConfig.style.outline.stroke}
       label="Outline Color"
@@ -104,5 +136,5 @@
         max={100}
       />
     </Folder>
-  </Folder>
+  </Folder> -->
 </Pane>

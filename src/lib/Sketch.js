@@ -1,8 +1,7 @@
 // https://www.npmjs.com/package/p5.capture
 
-import { ThrowUp } from "./ThrowUp";
 import { Bang, Wall } from "./Decos";
-// import { Character, Word } from "./Refactor";
+import { ThrowUp } from "./ThrowUp";
 
 import { STATE } from "./stores/Store";
 import { get } from "svelte/store";
@@ -12,144 +11,70 @@ import { get } from "svelte/store";
 export const mySketch = (p5) => {
   let state = get(STATE);
 
-  const size = {
-    x: 540,
-    y: 540,
-  };
+  // const state.size = {
+  //   x: 540,
+  //   y: 540,
+  // };
   let tup, tupLayer;
-  let b, bangLayer;
-  let w;
-
-  // let char;
+  let bgLayer, wall, bang;
 
   p5.setup = () => {
     // p5.frameRate(60);
     p5.pixelDensity(4);
-    p5.createCanvas(size.x, size.y);
-    tupLayer = p5.createGraphics(size.x, size.y);
-    bangLayer = p5.createGraphics(size.x, size.y);
+    p5.createCanvas(state.size.x, state.size.y);
+    tupLayer = p5.createGraphics(state.size.x, state.size.y);
+    bgLayer = p5.createGraphics(state.size.x, state.size.y);
 
     p5.noSmooth();
     tupLayer.noSmooth();
-    bangLayer.noSmooth();
 
     // CENTER LAYERS
-    tupLayer.translate(size.x / 2, size.y / 2);
-    bangLayer.translate(size.x / 2, size.y / 2);
+    tupLayer.translate(state.size.x / 2, state.size.y / 2);
+    // bgLayer.translate(state.size.x / 2, state.size.y / 2);
 
-    // char = new Word("aaaaaa");
-    // console.log(char);
+    tup = new ThrowUp(state.text);
 
-    b = new Bang(
-      9,
-      800,
-      0.1,
-      {
-        x: 1.2,
-        y: 0.5,
-      },
-      0.4
-    );
-    // console.log(b);
-
-    tup = new ThrowUp(
-      state.text,
-      state.position,
-      state.rotation,
-      state.gap,
-      state.charConfig
-    );
-    // tup.animate();
-    // console.log(tup);
-
-    w = new Wall(size, {
+    wall = new Wall(state.size, {
       x: 40,
       y: 20,
     });
-
-    // setTimeout(() => {
-    //   tup.updateString("ascanio");
-    // }, 2000);
-
-    // (() => {
-    //   gsap
-    //     .timeline({ repeat: -1, yoyo: true })
-    //     .to(
-    //       tup.charConfig.transform,
-    //       {
-    //         rotate: 0.2,
-    //         duration: 2,
-    //         ease: "power4.inOut",
-    //       },
-    //       "0"
-    //     )
-    //     .to(
-    //       tup.charConfig.transform.shear,
-    //       {
-    //         y: 0.5,
-    //         x: 0.5,
-    //         duration: 2,
-    //         ease: "power4.inOut",
-    //       },
-    //       "0"
-    //     )
-    //     .to(
-    //       tup.charConfig.transform.scale,
-    //       {
-    //         y: 3,
-    //         x: 0.5,
-    //         duration: 2,
-    //         ease: "power4.inOut",
-    //       },
-    //       "0"
-    //     )
-    //     .to(
-    //       tup.tupConfig,
-    //       {
-    //         rotation: -0.2,
-    //         duration: 2,
-    //         ease: "power4.inOut",
-    //       },
-    //       "0"
-    //     )
-    //     .to(
-    //       tup.charConfig.style.outline,
-    //       {
-    //         strokeWeight: 1,
-    //         duration: 2,
-    //         ease: "power4.inOut",
-    //       },
-    //       "0"
-    //     );
-    // })();
+    bang = new Bang(9, state.size.x, 0, { x: 1, y: 1 }, 0);
   };
 
   p5.draw = () => {
-    // console.log(tup.rotation);
-
-    tup.update(state.position, state.rotation, state.gap);
-
     // reset buffers
     p5.clear();
+    bgLayer.clear();
     tupLayer.clear();
-    bangLayer.clear();
 
-    p5.background(125);
+    p5.background(state.background.color);
 
-    w.print(p5);
-    // b.print(bangLayer);
-    tup.print(tupLayer);
-    // char.print(tupLayer);
+    if (state.background.type === "bang") {
+      bgLayer.push();
+      bgLayer.translate(state.size.x / 2, state.size.y / 2);
+      bang.print(bgLayer);
+      bgLayer.pop();
+    } else if (state.background.type === "wall") {
+      wall.print(bgLayer);
+    }
+
+    tup.updateTransform(state.tupTransform, state.charTransform);
+    tup.updateGap(state.gap);
+    tup.print(tupLayer, state.style);
 
     // DEBUG CENTER LINES
-    tupLayer.line(0, -size.y, 0, size.y);
-    tupLayer.line(-size.x, 0, size.x, 0);
+    // tupLayer.line(0, -state.size.y, 0, state.size.y);
+    // tupLayer.line(-state.size.x, 0, state.size.x, 0);
 
-    p5.image(bangLayer, 0, 0);
+    p5.image(bgLayer, 0, 0);
     p5.image(tupLayer, 0, 0);
   };
 
-  p5.windowResized = () => {};
+  // p5.windowRestate.sized = () => {};
+
+  p5.resize = () => {
+    p5.resizeCanvas(state.size.x, state.size.y);
+  };
 
   p5.resetTup = () => {
     tup.init(state.text);
