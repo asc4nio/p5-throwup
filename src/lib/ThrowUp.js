@@ -59,6 +59,38 @@ const LETTERS = {
       [[["#"]]],
     ],
   },
+  A: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+        [["arc"]],
+        [["arc", 0.5]],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["point-corner"]], [["line-side", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [["line-side"], ["line-side", 1.5]],
+        [
+          ["line-side", 1.5],
+          ["line-side", 1],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["square"]]],
+    ],
+  },
   a: {
     outline: [
       //0
@@ -89,6 +121,32 @@ const LETTERS = {
     ],
   },
 
+  B: {
+    outline: [
+      //0
+      [[["line-side"], ["line-side", 0.5]], [["arc", 0.5]], [["#"]]],
+      //1
+      [[["line-side"]], [["point-side", 2]], [["arc", 0.5]]],
+      //2
+      [[["line-side"]], [["point-side", 2]], [["line-side", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5], ["line-side", 1]],
+        [["arc", 1.5]],
+        [["arc", 1]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["arc", 0.5]], [["#"]]],
+      //1
+      [[["square"]], [["square"]], [["arc", 0.5]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
   b: {
     outline: [
       //0
@@ -120,7 +178,7 @@ const LETTERS = {
     ],
   },
 
-  c: {
+  C: {
     outline: [
       //0
       [
@@ -149,7 +207,58 @@ const LETTERS = {
       [[["arc", 1.5]], [["arc", 1]], [["square"]]],
     ],
   },
+  c: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side"], ["line-side", 1.5], ["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side"], ["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
 
+  D: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [["line-side", 0.5]],
+        [["arc", 0.5]],
+      ],
+      //1
+      [[["line-side"]], [["point-corner", 1.5]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5], ["line-side", 1]],
+        [["arc", 1.5]],
+        [["arc", 1]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["arc", 0.5]]],
+      //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
   d: {
     outline: [
       //0
@@ -181,7 +290,7 @@ const LETTERS = {
     ],
   },
 
-  e: {
+  E: {
     outline: [
       //0
       [
@@ -190,7 +299,7 @@ const LETTERS = {
         [["line-side"], ["line-side", 0.5], ["line-side", 1]],
       ],
       //1
-      [[["arc", 1.5]], [["arc", 0.5]], [["arc", 1]]],
+      [[["arc", 1.5]], [["arc", 1.5]], [["arc", 1]]],
       //2
       [[["arc"]], [["arc", 2]], [["arc", 0.5]]],
       //3
@@ -211,7 +320,81 @@ const LETTERS = {
       [[["arc", 1.5]], [["arc", 1]], [["square"]]],
     ],
   },
+  e: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+        [["arc"]],
+        [["arc", 0.5]],
+      ],
+      //1
+      [[["line-side"]], [["point-side"]], [["arc", 1]]],
+      //2
+      [[["line-side"]], [["arc", 2]], [["arc", 0.5]]],
+      //3
+      [
+        [["arc", 1.5]],
+        [["arc", 1]],
+        [["line-side"], ["line-side", 1.5], ["line-side", 1]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["arc"]], [["arc", 0.5]]],
+      //1
+      [[["square"]], [["square"]], [["arc", 1]]],
+      //2
+      [[["square"]], [["square"]], [["arc", 0.5]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]], [["square"]]],
+    ],
+  },
 
+  F: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+        [["arc"]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+          ["line-side", 1.5],
+        ],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //2
+      [
+        [["line-side"]],
+        [["#"]],
+        [
+          ["line-side", 1],
+          ["line-side", 1.5],
+        ],
+      ],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [
+          ["line-side", 1.5],
+          ["line-side", 1],
+        ],
+        [["#"]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["arc"]], [["square"]]],
+      //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["#"]]],
+    ],
+  },
   f: {
     outline: [
       //0
@@ -221,11 +404,11 @@ const LETTERS = {
         [["line-side"], ["line-side", 0.5], ["line-side", 1]],
       ],
       //1
-      [[["line-side"]], [["arc", 1.5]], [["arc", 1]]],
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
       //2
       [
         [["line-side"]],
-        [],
+        [["#"]],
         [
           ["line-side", 1],
           ["line-side", 0.5],
@@ -246,16 +429,15 @@ const LETTERS = {
       //0
       [[["arc"]], [["arc", 0.5]], [["square"]]],
       //1
-      [[["square"]], [["square"]], [["arc", 1]]],
+      [[["square"]], [["square"]], [["square"]]],
       //2
       [[["square"]], [["square"]], [["square"]]],
       //3
       [[["square"]], [["square"]], [["#"]]],
-      // [[["square"]], [["square"]], [["square"], ["arc",  1.5, "-"]]],
     ],
   },
 
-  g: {
+  G: {
     outline: [
       //0
       [[["arc"]], [["arc", 0.5]], [["#"]]],
@@ -287,41 +469,42 @@ const LETTERS = {
       [[["arc", 1.5]], [["arc", 1]], [["square"]]],
     ],
   },
-
-  h: {
+  g: {
     outline: [
       //0
-      [[["line-side"], ["line-side", 0.5], ["line-side", 1]], [["#"]], [["#"]]],
+      [
+        [["arc"]],
+        [["arc", 0.5]],
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+      ],
       //1
-      [[["line-side"]], [["line-side"], ["arc"]], [["arc", 0.5]]],
+      [[["line-side"]], [["point-side", 1]], [["line-side", 1]]],
       //2
-      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      [[["arc", 1.5]], [["arc", 1]], [["line-side", 1]]],
       //3
       [
-        [["line-side"], ["line-side", 1.5]],
-        [["line-side"], ["line-side", 1.5]],
-        [
-          ["line-side", 1.5],
-          ["line-side", 1],
-        ],
+        [["line-side"], ["line-side", 0.5], ["line-side", 1.5]],
+        [["line-side", 1.5]],
+        [["arc", 1]],
       ],
     ],
     fill: [
       //0
-      [[["square"]], [["#"]], [["#"]]], //1
-      [[["square"]], [["arc"]], [["arc", 0.5]]],
+      [[["arc"]], [["arc", 0.5]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
       //2
-      [[["square"]], [["square"]], [["square"]]],
+      [[["arc", 1.5]], [["square"]], [["square"]]],
       //3
-      [[["square"]], [["square"]], [["square"]]],
+      [[["square"]], [["square"]], [["arc", 1]]],
     ],
   },
+
   H: {
     outline: [
       //0
       [
         [["line-side"], ["line-side", 0.5]],
-        [["line-side", 0.5]],
+        [["arc", 0.5]],
         [["line-side"], ["line-side", 0.5], ["line-side", 1]],
       ],
       //1
@@ -337,7 +520,7 @@ const LETTERS = {
     ],
     fill: [
       //0
-      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["arc", 0.5]], [["square"]]], //1
       [[["square"]], [["square"]], [["square"]]],
       //2
       [[["square"]], [["square"]], [["square"]]],
@@ -345,7 +528,73 @@ const LETTERS = {
       [[["square"]], [["square"]], [["square"]]],
     ],
   },
+  h: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+        [["#"]],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["arc", 0.5]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side"], ["line-side", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [["line-side", 1.5]],
+        [["line-side"], ["line-side", 1.5], ["line-side", 1]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["#"]]], //1
+      [[["square"]], [["square"]], [["arc", 0.5]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["square"]]],
+    ],
+  },
 
+  I: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [
+        [["line-side"], ["arc", 1.5]],
+        [
+          ["arc", 1],
+          ["line-side", 1],
+        ],
+      ],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [
+          ["line-side", 1.5],
+          ["line-side", 1],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]]],
+    ],
+  },
   i: {
     outline: [
       //0
@@ -375,41 +624,72 @@ const LETTERS = {
     ],
   },
 
+  J: {
+    outline: [
+      //0
+      [
+        [["#"]],
+        [["line-side"], ["line-side", 0.5]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+      ],
+      //1
+      [[["line-side"], ["line-side", 0.5]], [["#"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //3
+      [[["line-side"], ["line-side", 1.5]], [["line-side", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["#"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["arc", 1]]],
+    ],
+  },
   j: {
     outline: [
       //0
       [[["#"]], [["arc"]], [["arc", 0.5]]],
       //1
-      [[["arc"]], [["arc", 0.5]], [["line-side", 1]]],
-      //2
-      [[["line-side"]], [["#"]], [["line-side", 1]]],
-      //3
       [
-        [["arc", 1.5]],
-        [["line-side", 1.5]],
         [
+          ["line-side", 1],
           ["line-side", 1.5],
+        ],
+        [["arc", 1.5]],
+        [
+          ["arc", 1],
           ["line-side", 1],
         ],
       ],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //3
+      [[["line-side"], ["line-side", 1.5]], [["line-side", 1.5]], [["arc", 1]]],
     ],
     fill: [
       //0
       [[["#"]], [["arc"]], [["arc", 0.5]]], //1
-      [[["arc"]], [["square"]], [["square"]]],
+      [[["#"]], [["square"]], [["square"]]],
       //2
       [[["square"]], [["square"]], [["square"]]],
       //3
-      [[["arc", 1.5]], [["square"]], [["square"]]],
+      [[["square"]], [["square"]], [["arc", 1]]],
     ],
   },
 
-  k: {
+  K: {
     outline: [
       //0
       [
         [["line-side"], ["line-side", 0.5], ["line-side", 1]],
-        [["line-side"], ["line-side", 0.5]],
+        [["line-side"], ["arc", 1]],
         [
           ["line-side", 0.5],
           ["line-side", 1],
@@ -418,11 +698,11 @@ const LETTERS = {
       //1
       [[["line-side"]], [["#"]], [["arc", 1]]],
       //2
-      [[["line-side"]], [["#"]], [["arc", 0.5]]],
+      [[["line-side"]], [["line-side"]], [["arc", 0.5]]],
       //3
       [
-        [["line-side"], ["line-side", 1.5], ["line-side", 1]],
-        [["line-side", 1.5]],
+        [["line-side"], ["line-side", 1.5]],
+        [["line-side", 1.5], ["line-side"]],
         [
           ["line-side", 1],
           ["line-side", 1.5],
@@ -431,7 +711,40 @@ const LETTERS = {
     ],
     fill: [
       //0
+      [[["square"]], [["arcInv", 1]], [["square"]]],
+      //1
+      [[["square"]], [["square"]], [["arc", 1]]],
+      //2
+      [[["square"]], [["square"]], [["arc", 0.5]]],
+      //3
       [[["square"]], [["square"]], [["square"]]],
+    ],
+  },
+  k: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+        [["line-side"], ["arc"]],
+        [["arc", 0.5]],
+      ],
+      //1
+      [[["line-side"]], [["line-side"]], [["arc", 1], ["line-side"]]],
+      //2
+      [[["line-side"]], [["#"]], [["arc", 0.5]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [["line-side", 1.5], ["line-side"]],
+        [
+          ["line-side", 1],
+          ["line-side", 1.5],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["arc"]], [["arc", 0.5]]],
       //1
       [[["square"]], [["square"]], [["arc", 1]]],
       //2
@@ -441,11 +754,17 @@ const LETTERS = {
     ],
   },
 
-  l: {
+  L: {
     outline: [
       //0
-      [[["arc"]], [["arc", 0.5]], [["line-side", 1.5]]],
-
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+        [["line-side", 1.5]],
+      ],
       //1
       [[["line-side"]], [["#"]], [["line-side", 1]]],
       //2
@@ -462,7 +781,7 @@ const LETTERS = {
     ],
     fill: [
       //0
-      [[["arc"]], [["arc", 0.5]], [["#"]]],
+      [[["square"]], [["square"]], [["#"]]],
       //1
       [[["square"]], [["square"]], [["square"]]],
       //2
@@ -471,7 +790,80 @@ const LETTERS = {
       [[["arc", 1.5]], [["square"]], [["square"]]],
     ],
   },
+  l: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+        [["#"]],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["arc", 1.5]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //3
+      [
+        [["arc", 1.5]],
+        [["line-side", 1.5]],
+        [
+          ["line-side", 1.5],
+          ["line-side", 1],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["#"]]],
+      //1
+      [[["square"]], [["square"]], [["arcInv", 1.5]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["square"]], [["square"]]],
+    ],
+  },
 
+  M: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]], [["arc"]], [["arc", 0.5]]],
+      //1
+      [
+        [["line-side"]],
+        [["line-side"]],
+        [["line-side", 1]],
+        [["line-side", 1]],
+      ],
+      //2
+      [
+        [["line-side"]],
+        [["line-side"]],
+        [["#"]],
+        [["line-side"], ["line-side", 1]],
+      ],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [["arc", 1.5], ["line-side"]],
+        [["arc", 1]],
+        [["line-side"], ["line-side", 1.5], ["line-side", 1]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]], [["arc"]], [["arc", 0.5]]],
+      //1
+      [[["square"]], [["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["square"]], [["square"]]],
+    ],
+  },
   m: {
     outline: [
       //0
@@ -505,6 +897,35 @@ const LETTERS = {
     ],
   },
 
+  N: {
+    outline: [
+      //0
+      [
+        [["arc"]],
+        [["arc", 0.5]],
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+      ],
+      //1
+      [[["line-side"]], [["line-side", 1]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side"]], [["line-side", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [["arc", 1.5], ["line-side"]],
+        [["arc", 1]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
   n: {
     outline: [
       //0
@@ -538,7 +959,7 @@ const LETTERS = {
     ],
   },
 
-  o: {
+  O: {
     outline: [
       //0
       [[["arc"]], [["line-side", 0.5]], [["arc", 0.5]]],
@@ -559,7 +980,61 @@ const LETTERS = {
       [[["arc", 1.5]], [["square"]], [["arc", 1]]],
     ],
   },
+  o: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"], ["point-corner", 1]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
 
+  P: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [["line-side", 0.5]],
+        [["arc", 0.5]],
+      ],
+      //1
+      [[["line-side"]], [["point-corner", 1]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["#"]], [["arc", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [
+          ["line-side", 1],
+          ["line-side", 1.5],
+        ],
+        [["#"]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["arc", 0.5]]],
+      //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["arc", 1]]],
+      //3
+      [[["square"]], [["square"]], [["#"]]],
+    ],
+  },
   p: {
     outline: [
       //0
@@ -569,7 +1044,7 @@ const LETTERS = {
         [["arc", 0.5]],
       ],
       //1
-      [[["line-side"]], [["point-corner", 1.5]], [["line-side", 1]]],
+      [[["line-side"]], [["point-corner", 1]], [["line-side", 1]]],
       //2
       [[["line-side"]], [["#"]], [["arc", 1]]],
       //3
@@ -595,6 +1070,31 @@ const LETTERS = {
   },
 
   q: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]], [["#"]]],
+      //1
+      [[["line-side"]], [["line-side", 1]], [["#"]]],
+      //2
+      [[["line-side"]], [["#"]], [["arc", 0.5]]],
+      //3
+      [
+        [["arc", 1.5]],
+        [["arc", 1]],
+        [["line-side"], ["line-side", 1], ["line-side", 1.5]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]], [["#"]]], //1
+      [[["square"]], [["square"]], [["#"]]],
+      //2
+      [[["square"]], [["square"]], [["arc", 0.5]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]], [["square"]]],
+    ],
+  },
+  Q: {
     outline: [
       //0
       [[["arc"]], [["arc", 0.5]], [["#"]]],
@@ -653,8 +1153,77 @@ const LETTERS = {
       [[["square"]], [["square"]], [["square"]]],
     ],
   },
+  R: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+        [["arc"]],
+        [["arc", 0.5]],
+      ],
+      //1
+      [[["line-side"]], [["point-corner", 1.5]], [["arc", 1]]],
+      //2
+      [[["line-side"]], [["#"]], [["arc", 0.5]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [["line-side"], ["line-side", 1.5]],
+        [
+          ["line-side", 1],
+          ["line-side", 1.5],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["arc"]], [["arc", 0.5]]],
+      //1
+      [[["square"]], [["square"]], [["arc", 1]]],
+      //2
+      [[["square"]], [["square"]], [["arc", 0.5]]],
+      //3
+      [[["square"]], [["square"]], [["square"]]],
+    ],
+  },
 
   s: {
+    outline: [
+      //0
+      [
+        [["arc"]],
+        [["arc", 0.5]],
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+      ],
+      //1
+      [
+        [["line-side"]],
+        [["arc"]],
+        [
+          ["line-side", 1],
+          ["arc", 0.5],
+        ],
+      ],
+      //2
+      [[["line-side"], ["arc", 1.5]], [["arc", 1]], [["line-side", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1], ["line-side", 1.5]],
+        [["arc", 1.5]],
+        [["arc", 1]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  S: {
     outline: [
       //0
       [
@@ -729,8 +1298,71 @@ const LETTERS = {
       [[["arc", 1.5]], [["arc", 1]], [["square"]]],
     ],
   },
+  T: {
+    outline: [
+      //0
+      [
+        [["arc", 1]],
+        [["line-side", 0.5]],
+        [["line-side"], ["arc", 1], ["line-side", 1]],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //2
+      [
+        [["arc"], ["line-side", 0.5]],
+        [["arc"]],
+        [
+          ["line-side", 0.5],
+          ["arc", 0.5],
+        ],
+      ],
+      //3
+      [
+        [["arc", 1.5]],
+        [["arc", 1]],
+        [["line-side"], ["line-side", 1], ["line-side", 1.5]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["arcInv", 1]], [["square"]], [["arcInv", 1]]],
+      // [[["arcInv", 1]], [["square"]], [["arc", 1, "-"], ["square"]]],
+      //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["arc"]], [["square"]], [["arc", 0.5]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]], [["square"]]],
+    ],
+  },
 
   u: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+        [["arc"]],
+        [["arc", 0.5]],
+      ],
+      //1
+      [[["line-side"], ["line-side", 1]], [["#"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["line-side", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["square"]], [["arc", 1]]],
+    ],
+  },
+  U: {
     outline: [
       //0
       [
@@ -787,8 +1419,67 @@ const LETTERS = {
       [[["square"]], [["square"]], [["arc", 1]]],
     ],
   },
+  V: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+      ],
+      //1
+      [[["line-side"]], [["line-side", 1]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //3
+      [[["line-side"], ["line-side", 1.5]], [["line-side", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["arc", 1]]],
+    ],
+  },
 
   w: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [["line-side", 0.5], ["line-side"], ["line-side", 1]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["#"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["line-side", 1.5], ["line-center"]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["square"]], [["arc", 1]]],
+    ],
+  },
+  W: {
     outline: [
       //0
       [
@@ -852,8 +1543,75 @@ const LETTERS = {
       [[["square"]], [["square"]], [["square"]]],
     ],
   },
+  X: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [["line-side", 0.5], ["line-center"]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+      ],
+      //1
+      [[["arc", 1.5]], [["#"]], [["arc", 1]]],
+      //2
+      [[["arc"]], [["#"]], [["arc", 0.5]]],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [["line-side", 1.5], ["line-center"]],
+        [
+          ["line-side", 1.5],
+          ["line-side", 1],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["arc", 1.5]], [["square"]], [["arc", 1]]],
+      //2
+      [[["arc"]], [["square"]], [["arc", 0.5]]],
+      //3
+      [[["square"]], [["square"]], [["square"]]],
+    ],
+  },
 
   y: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [["line-side", 0.5]],
+        [["line-side"], ["line-side", 0.5], ["line-side", 1]],
+      ],
+      //1
+      [[["line-side"]], [["#"]], [["line-side"], ["line-side", 1]]],
+      //2
+      [[["arc", 1.5]], [["#"]], [["line-side", 1]]],
+      //3
+      [
+        [["line-side"], ["line-side", 0.5], ["line-side", 1.5]],
+        [
+          ["line-side", 1.5],
+          ["line-side", 0.5],
+        ],
+        [["arc", 1]],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["arc", 1.5]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["arc", 1]]],
+    ],
+  },
+  Y: {
     outline: [
       //0
       [
@@ -928,73 +1686,259 @@ const LETTERS = {
       [[["square"]], [["square"]], [["square"]]],
     ],
   },
+  Z: {
+    outline: [
+      //0
+      [
+        [["line-side"], ["line-side", 0.5]],
+        [["line-side", 0.5]],
+        [
+          ["line-side", 0.5],
+          ["line-side", 1],
+        ],
+      ],
+      //1
+      [[["line-side"], ["arc"]], [["arc", 0.5]], [["line-side", 1]]],
+      //2
+      [
+        [["line-side"]],
+        [["arc", 1.5]],
+        [
+          ["arc", 1],
+          ["line-side", 1],
+        ],
+      ],
+      //3
+      [
+        [["line-side"], ["line-side", 1.5]],
+        [["line-side", 1.5]],
+        [
+          ["line-side", 1.5],
+          ["line-side", 1],
+        ],
+      ],
+    ],
+    fill: [
+      //0
+      [[["square"]], [["square"]], [["square"]]], //1
+      [[["square"]], [["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]], [["square"]]],
+      //3
+      [[["square"]], [["square"]], [["square"]]],
+    ],
+  },
 
-  /*
-    A: {
-      outline: [
-        //0
-        [
-          [["line-side"], ["line-side",  0.5], ["line-side",  1]],
-          [["arc"]],
-          [["arc",  0.5]],
-        ],
-        //1
-        [[["line-side"]], [["#"]], [["line-side", 1]]],
-        //2
-        [[["line-side"]], [["point-corner"]], [["line-side", 1]]],
-        //3
-        [
-          [["line-side"], ["line-side",  1.5], ["line-side",  1]],
-          [["line-side",  1.5]],
-          [
-            ["line-side",  1.5],
-            ["line-side",  1],
-          ],
-        ],
-      ],
-      fill: [
-        //0
-        [[["square"]], [["arc"]], [["arc",  0.5]]],
-        //1
-        [[["square"]], [["square"]], [["square"]]],
-        //2
-        [[["square"]], [["square"]], [["square"]]],
-        //3
-        [[["square"]], [["square"]], [["square"]]],
-      ],
-    },
-      b: {
-      outline: [
-        //0
-        [
-          [["line-side"], ["line-side",  0.5], ["line-side",  1]],
-          [["#"]],
-          [["#"]],
-        ],
-        //1
-        [[["line-side"]], [["line-side"], ["arc"]], [["arc",  0.5]]],
-        //2
-        [[["line-side"]], [["point-side"]], [["line-side", 1]]],
-        //3
-        [
-          [["line-side"], ["line-side",  1.5], ["line-side",  1]],
-          [["arc",  1.5]],
-          [["arc",  1]],
-        ],
-      ],
-      fill: [
-        //0
-        [[["square"]], [["#"]], [["#"]]],
-  
-        //1
-        [[["square"]], [["arc"]], [["arc",  0.5]]],
-        //2
-        [[["square"]], [["square"]], [["square"]]],
-        //3
-        [[["square"]], [["arc",  1.5]], [["arc",  1]]],
-      ],
-    },
-    */
+  0: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  1: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  2: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  3: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  4: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  5: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  6: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  7: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  8: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
+  9: {
+    outline: [
+      //0
+      [[["arc"]], [["arc", 0.5]]],
+      //1
+      [[["line-side"]], [["line-side", 1]]],
+      //2
+      [[["line-side"]], [["line-side", 1]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+    fill: [
+      //0
+      [[["arc"]], [["arc", 0.5]]], //1
+      [[["square"]], [["square"]]],
+      //2
+      [[["square"]], [["square"]]],
+      //3
+      [[["arc", 1.5]], [["arc", 1]]],
+    ],
+  },
 };
 
 export class Character {
